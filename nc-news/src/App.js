@@ -3,22 +3,35 @@ import Header from './components/header';
 import Home from './components/home';
 import ArticlesByTopics from './components/articles/ArticlesByTopics';
 import SingleArticle from './components/articles/SingleArticle';
-import ArticleByUser from './components/articles/ArticleByUser';
+import ArticleByAuthor from './components/articles/ArticleByAuthor';
 import { Router } from '@reach/router';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Router>
-        <Home path='/' />
-        <ArticlesByTopics path='/:topic/articles' />
-        <SingleArticle path='/articles/:id' />
-        <ArticleByUser path='/articles/author/:author' />
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    sort_by: null,
+    votes: null,
+    comment_count: null,
+    created_at: null,
+  }
+
+  filterArticles = props => {
+    // this.setState({  })
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Header filterArticles={this.filterArticles} />
+        <Router>
+          <Home path='/' />
+          <ArticlesByTopics path='/:topic/articles' />
+          <SingleArticle path='/articles/:id' />
+          <ArticleByAuthor path='/articles/author/:author' />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

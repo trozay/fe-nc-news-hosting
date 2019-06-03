@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import { Link } from '@reach/router'
+import LoginBar from './login/LoginBar';
 
 class Header extends Component {
   state = {
@@ -22,10 +23,15 @@ class Header extends Component {
         <Link to='/'><h1>NC News</h1></Link>
         <h4>Topics</h4>
         <ul>
-          {topics && topics.map(topic => {
-            return <Link to={`/${topic.slug}/articles`}><li>{topic.slug}</li></Link>
+          {topics && topics.map((topic, i) => {
+            return <Link to={`/${topic.slug}/articles`}><li key={topic.slug}>{topic.slug}</li></Link>
           })}
         </ul>
+        <h4>Sort By</h4>
+        <button onClick={() => this.props.filterArticles('votes')}>Votes</button>
+        <button>Comment Count</button>
+        <button>Created At</button>
+        <LoginBar />
       </div>
     )
   }

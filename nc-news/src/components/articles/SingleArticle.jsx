@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getSingleArticle, getCommentsByArticle } from '../../api';
-import { Link } from '@reach/router'
+import ArticleList from './articleList';
+import CommentList from '../commentList'
 
 class SingleArticle extends Component {
   state = {
@@ -21,24 +22,10 @@ class SingleArticle extends Component {
     const { article, comments } = this.state;
     return (
       <div>
-        {article && <div key={article.article_id}>
-          <h4>{article.title}</h4>
-          <p>{article.body}</p>
-          <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>
-          <h6>Votes: {article.votes}<span role="img">👍</span></h6>
-          <h6>Comments: {article.comment_count}</h6>
-        </div>}
+        {article && <ArticleList articles={[article]} />}
         <h3>Comments</h3>
         <ul>
-          {comments && comments.map(comment => {
-            return <li key={comment.comment_id}>
-              <div>
-                <p>{comment.body}</p>
-                <h6>{comment.author}</h6>
-                <h6>{comment.votes}</h6>
-              </div>
-            </li>
-          })}
+          {comments && <CommentList comments={comments} />}
         </ul>
       </div>
     )

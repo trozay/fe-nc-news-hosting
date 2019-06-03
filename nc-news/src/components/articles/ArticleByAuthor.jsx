@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import getArticles from '../../api';
 import ArticleList from './articleList'
 
-class ArticleByUser extends Component {
+class ArticleByAuthor extends Component {
   state = {
     author: null,
     articles: null
@@ -25,4 +25,4 @@ class ArticleByUser extends Component {
   }
 };
 
-export default ArticleByUser;
+export default ArticleByAuthor;
