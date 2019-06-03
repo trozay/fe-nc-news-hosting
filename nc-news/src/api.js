@@ -2,6 +2,7 @@ import axios from 'axios';
 const baseUrl = 'https://new-nc-app.herokuapp.com/api';
 
 export const getArticles = query => {
+  query.sort_by = query.sort_by || 'comment_count';
   return axios.get(`${baseUrl}/articles`, {
     params: query
   })

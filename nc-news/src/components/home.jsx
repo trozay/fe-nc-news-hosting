@@ -3,14 +3,22 @@ import ArticleList from './articles/articleList';
 import { getArticles } from '../api';
 
 class Home extends Component {
-
   state = {
     articles: null
   };
 
   componentDidMount() {
-    getArticles({ sort_by: 'comment_count' })
+    const { query } = this.props;
+    getArticles({ sort_by: query })
       .then(articles => this.setState({ articles }))
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { query } = this.props;
+    if (prevProps.query !== query) {
+      getArticles({ sort_by: query })
+        .then(articles => this.setState({ articles }))
+    }
   };
 
   render() {
@@ -18,7 +26,7 @@ class Home extends Component {
     return (
       <div>
         <h3>Most Popular</h3>
-        {articles && <ArticleList articles={articles} loggedInUser={this.props.loggedInUser} handleVoteClick={this.handleVoteClick} />}
+        {articles && <ArticleList handleVoteClick={this.handleVoteClick} articles={articles} loggedInUser={this.props.loggedInUser} />}
       </div>
     )
   }

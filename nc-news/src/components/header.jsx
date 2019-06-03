@@ -29,8 +29,8 @@ class Header extends Component {
         </ul>
         <h4>Sort By</h4>
         <button onClick={() => this.props.filterArticles('votes')}>Votes</button>
-        <button>Comment Count</button>
-        <button>Created At</button>
+        <button onClick={() => this.props.filterArticles('comment_count')}>Comment Count</button>
+        <button onClick={() => this.props.filterArticles('created_at')}>Created At</button>
       </div>
     )
   }

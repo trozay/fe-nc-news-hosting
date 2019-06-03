@@ -9,13 +9,15 @@ class ArticlesByTopics extends Component {
   }
 
   componentDidMount() {
-    getArticles({ topic: this.props.topic })
+    const { query } = this.props;
+    getArticles({ sort_by: query, topic: this.state.topic })
       .then(articles => this.setState({ articles }));
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.topic !== this.props.topic) {
-      getArticles({ topic: this.props.topic })
+    const { query } = this.props;
+    if (prevProps.topic !== this.props.topic || prevProps.query !== query) {
+      getArticles({ sort_by: query, topic: this.props.topic })
         .then(articles => this.setState({ articles, topic: this.props.topic }));
     };
   };
