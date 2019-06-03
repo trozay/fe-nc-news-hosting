@@ -31,16 +31,12 @@ export const getUser = username => {
 };
 
 export const postArticle = ({ author, title, body, topic }) => {
-  console.log(author, title, body, topic)
   return axios.post(`${baseUrl}/articles`, {
     author, title, topic, body
   })
-    .then(({ data }) => {
-      console.log(data)
+    .then(({ data: { article } }) => {
+      return article;
     });
 };
-
-
-
 
 export default getArticles;

@@ -8,14 +8,22 @@ class AddArticle extends Component {
     articleTitleInput: null,
     bodyInput: null,
     topicInput: null,
-    errMsg: null
+    errMsg: null,
+    successMsg: null
   };
 
   render() {
+    const { successMsg, errMsg } = this.state;
+    console.log(successMsg)
     return (
       <Fragment>
         <AddArticleForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-        {this.state.errMsg && <h2>{this.state.errMsg}</h2>}
+        {errMsg && <h2>{errMsg}</h2>}
+        {successMsg && <div>
+          <h3>Article added by {successMsg.author}</h3>
+          <h5>{successMsg.title}</h5>
+          <h5>{successMsg.topic}</h5>
+        </div>}
       </Fragment>
     )
   }
@@ -32,9 +40,21 @@ class AddArticle extends Component {
         return Promise.all([postArticle({ author: usernameInput, title: articleTitleInput, body: bodyInput, topic: topicInput })])
       })
       .then(([article]) => {
-        console.log('hello')
+        console.log('article', article.author)
+        this.setState({
+          successMsg: {
+            title: article.title,
+            author: article.author,
+            topic: article.topic
+          },
+          usernameInput: null,
+          articleTitleInput: null,
+          bodyInput: null,
+          topicInput: null,
+          errMsg: null
+        });
       })
-      .catch(console.log)
+      .catch(this.setState({ errMsg: 'Invalid Input', successMsg: null }));
   };
 };
 
