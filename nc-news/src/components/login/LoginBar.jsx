@@ -9,7 +9,7 @@ export class LoginBar extends React.Component {
     return (
       <form onSubmit={this.props.handleLogin}>
         <input type='text' onChange={this.props.handleInput} />
-        <input type='submit' />
+        <input type='submit' value='login' />
       </form>
     )
   }
