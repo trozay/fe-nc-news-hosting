@@ -7,6 +7,10 @@ const CommentList = props => {
         <p>{comment.body}</p>
         <h6>{comment.author}</h6>
         <h6>{comment.votes}</h6>
+        {props.loggedInUser && <div>
+          <p>↑</p>
+          <p>↓</p>
+        </div>}
       </div>
     </li>
   })}

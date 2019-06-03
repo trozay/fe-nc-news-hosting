@@ -13,6 +13,10 @@ export class ArticleList extends React.Component {
                 <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>
                 <h6>Votes: {article.votes}</h6>
                 <h6>Comments: {article.comment_count}</h6>
+                {this.props.loggedInUser && <div>
+                  <p>↑</p>
+                  <p>↓</p>
+                </div>}
               </div>
             </li>
           )

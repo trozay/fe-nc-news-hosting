@@ -22,11 +22,12 @@ class ArticlesByTopics extends Component {
 
   render() {
     const { articles } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <div>
         <h5>{this.state.topic}</h5>
         <ul>
-          {articles && <ArticleList articles={articles} />}
+          {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
         </ul>
       </div>
     )

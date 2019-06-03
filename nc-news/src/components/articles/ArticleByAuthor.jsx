@@ -15,11 +15,12 @@ class ArticleByAuthor extends Component {
 
 
   render() {
-    const { articles, author } = this.state
+    const { articles, author } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <div>
         <h2>{author}s Articles</h2>
-        {articles && <ArticleList articles={articles} />}
+        {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
       </div>
     )
   }

@@ -20,12 +20,13 @@ class SingleArticle extends Component {
 
   render() {
     const { article, comments } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <div>
-        {article && <ArticleList articles={[article]} />}
+        {article && <ArticleList articles={[article]} loggedInUser={loggedInUser} />}
         <h3>Comments</h3>
         <ul>
-          {comments && <CommentList comments={comments} />}
+          {comments && <CommentList comments={comments} loggedInUser={loggedInUser} />}
         </ul>
       </div>
     )

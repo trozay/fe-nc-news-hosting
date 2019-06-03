@@ -24,5 +24,11 @@ export const getCommentsByArticle = id => {
     });
 };
 
+export const getUser = username => {
+  return axios.get(`${baseUrl}/users/${username}`)
+    .then(({ data: { user } }) => user)
+};
+
+
 
 export default getArticles;
