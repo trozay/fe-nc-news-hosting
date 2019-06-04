@@ -5,16 +5,13 @@ import ArticlesByTopics from './components/articles/ArticlesByTopics';
 import SingleArticle from './components/articles/SingleArticle';
 import ArticleByAuthor from './components/articles/ArticleByAuthor';
 import AddArticle from './components/articles/addArticle';
-import LoginBar from './components/login/LoginBar';
-import SignOut from './components/login/SignOut'
 import { getUser } from './api';
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
 import './App.css';
 
 class App extends React.Component {
   state = {
     loggedInUser: null,
-    errMsg: null,
     query: undefined
   }
 
@@ -24,22 +21,16 @@ class App extends React.Component {
   };
 
   render() {
-    const { loggedInUser, query, errMsg } = this.state;
+    const { loggedInUser, query } = this.state;
     return (
       <div className="App">
-        <Header loggedInUser={loggedInUser} />
-
-        {!loggedInUser ? <LoginBar handleLogin={this.handleLogin}
-          handleInput={this.handleInput} /> : <SignOut signOut={this.signOut} />}
-        {errMsg && <h4>{errMsg}</h4>}
-
-        {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary'>Add Article</button></Link>}
-
+        <Header loggedInUser={loggedInUser} handleLogin={this.handleLogin}
+          handleInput={this.handleInput} signOut={this.signOut} />
         <Router>
           <Home path='/' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
           <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
           <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
-          <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterArticles={this.filterArticles} />
+          <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterArticles={this.filterArticles} query={query} />
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
         </Router>
       </div>

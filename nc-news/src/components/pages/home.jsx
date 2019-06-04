@@ -26,8 +26,8 @@ class Home extends Component {
     const { articles } = this.state;
     return (
       <div>
-        <SortByArticle filterArticles={this.props.filterArticles} />
         <h3>Most Popular</h3>
+        <SortByArticle filterArticles={this.props.filterArticles} />
         {articles && <ArticleList articles={articles} loggedInUser={this.props.loggedInUser} />}
       </div>
     )

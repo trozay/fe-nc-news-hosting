@@ -14,13 +14,26 @@ class SingleArticle extends Component {
   };
 
   componentDidMount() {
+    const { query } = this.props;
     getSingleArticle(this.props.id)
       .then(article => {
-        return Promise.all([article, getCommentsByArticle(this.props.id)])
+        return Promise.all([article, getCommentsByArticle(this.props.id, { sort_by: query })])
       })
       .then(([article, comments]) => {
         this.setState({ article, comments })
       })
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.query !== this.props.query) {
+      getSingleArticle(this.props.id)
+        .then(article => {
+          return Promise.all([article, getCommentsByArticle(this.props.id, { sort_by: this.props.query })])
+        })
+        .then(([article, comments]) => {
+          this.setState({ article, comments })
+        });
+    };
   };
 
   render() {
@@ -28,12 +41,12 @@ class SingleArticle extends Component {
     const { loggedInUser } = this.props;
     return (
       <div>
-        {loggedInUser && <Fragment>
-          <AddComment id={this.props.id} />
-        </Fragment>}
         {this.props.location.state && this.props.location.state.newArticle && <h4>Article Added!</h4>}
         {article && <ShowSingleArticle articles={[article]} loggedInUser={loggedInUser} />}
         <h3>Comments</h3>
+        {loggedInUser && <Fragment>
+          <AddComment id={this.props.id} loggedInUser={loggedInUser} />
+        </Fragment>}
         <SortByComments filterArticles={this.props.filterArticles} />
         <ul>
           {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleDelete={this.handleDelete} />}

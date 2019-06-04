@@ -28,8 +28,8 @@ class ArticlesByTopics extends Component {
     const { loggedInUser } = this.props;
     return (
       <div>
+        <h3>Topic: {this.state.topic}</h3>
         <SortByArticle filterArticles={this.props.filterArticles} />
-        <h5>{this.state.topic}</h5>
         <ul>
           {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
         </ul>

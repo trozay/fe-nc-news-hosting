@@ -4,18 +4,17 @@ import { postComment } from '../../api';
 
 class AddComment extends Component {
   state = {
-    username: null,
     body: null,
     successMsg: null,
     errMsg: null
   };
 
   render() {
-    const { successMsg, errMsg } = this.state;
+    const { successMsg, errMsg, username, body } = this.state;
     return (
       <div>
         <h5>Add Comment</h5>
-        {!successMsg && <AddCommentForm onChange={this.handleInput} onSubmit={this.handleSubmit} />}
+        {!successMsg && <AddCommentForm onChange={this.handleInput} onSubmit={this.handleSubmit} body={body} username={username} />}
         {errMsg && <h4>{errMsg}</h4>}
         {successMsg && <h4>{successMsg}</h4>}
       </div>
@@ -27,11 +26,10 @@ class AddComment extends Component {
   };
 
   handleSubmit = e => {
-    const { username, body } = this.state;
-    const article_id = this.props.id
+    const { body } = this.state;
+    const { loggedInUser, id } = this.props;
     e.preventDefault();
-    console.log('hello')
-    postComment({ username, body, article_id })
+    postComment({ username: loggedInUser, body, id })
       .then((comment) => {
         this.setState({ successMsg: "Comment successfully added" });
       })

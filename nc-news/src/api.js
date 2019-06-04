@@ -18,8 +18,10 @@ export const getSingleArticle = id => {
     });
 };
 
-export const getCommentsByArticle = id => {
-  return axios.get(`${baseUrl}/articles/${id}/comments`)
+export const getCommentsByArticle = (id, query) => {
+  return axios.get(`${baseUrl}/articles/${id}/comments`, {
+    params: query
+  })
     .then(({ data: { comments } }) => {
       return comments;
     });
@@ -39,8 +41,8 @@ export const postArticle = ({ author, title, body, topic }) => {
     });
 };
 
-export const postComment = ({ username, body, article_id }) => {
-  return axios.post(`${baseUrl}/articles/${article_id}/comments`, { username, body })
+export const postComment = ({ username, body, id }) => {
+  return axios.post(`${baseUrl}/articles/${id}/comments`, { username, body })
     .then(({ data: { comment } }) => {
       return comment;
     });

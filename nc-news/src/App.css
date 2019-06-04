@@ -4,15 +4,13 @@ body {
 }
 
 .header h1{
-  padding: 0.5em;
-}
-
-.header ul {
-  list-style-type: none;
-  flex: row;
-  display: inline
+  margin-right: 1em;
 }
 
 button {
   margin: 5px;
+} 
+
+.login {
+  text-align: end;
 }
