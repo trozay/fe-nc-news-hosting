@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import getArticles from '../../api';
 import ArticleList from './articleList'
+import SortByArticle from '../sorting/sortByArticle';
 
 class ArticleByAuthor extends Component {
   state = {
@@ -28,6 +29,7 @@ class ArticleByAuthor extends Component {
     const { loggedInUser, author } = this.props;
     return (
       <div>
+        <SortByArticle filterArticles={this.props.filterArticles} />
         <h2>{author}'s Articles</h2>
         {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
       </div>

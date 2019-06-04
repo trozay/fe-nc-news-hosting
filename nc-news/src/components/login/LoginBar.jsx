@@ -7,16 +7,22 @@ export class LoginBar extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleLogin}>
-        <input type='text' onChange={this.handleInput} />
-        <input type='submit' value='login' />
+      <form onSubmit={this.handleSubmit} className='form-group'>
+        <input type='text' onChange={this.handleInput} className='form-control' />
+        <button type='submit' value='login' className='btn btn-primary'>Log In</button>
       </form>
     )
   }
-
   handleInput = e => {
     this.setState({ usernameInput: e.target.value });
   };
+
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.handleLogin(this.state.usernameInput);
+  };
+
 };
 
 export default LoginBar;

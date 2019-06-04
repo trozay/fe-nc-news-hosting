@@ -19,19 +19,14 @@ class Header extends Component {
     const { topics } = this.state;
     const { loggedInUser } = this.props
     return (
-      <div>
+      <div className='header'>
         <Link to='/'><h1>NC News</h1></Link>
         {loggedInUser && <h4>{loggedInUser}</h4>}
-        <h4>Topics</h4>
-        <ul>
+        <ul className='container'>
           {topics && topics.map((topic, i) => {
-            return <Link to={`/${topic.slug}/articles`}><li key={topic.slug}>{topic.slug}</li></Link>
+            return <Link to={`/${topic.slug}/articles`}><li key={topic.slug}><button className='btn btn-primary'>{topic.slug}</button></li></Link>
           })}
         </ul>
-        <h4>Sort By</h4>
-        <button onClick={() => this.props.filterArticles('votes')}>Votes</button>
-        <button onClick={() => this.props.filterArticles('comment_count')}>Comment Count</button>
-        <button onClick={() => this.props.filterArticles('created_at')}>Created At</button>
       </div>
     )
   }

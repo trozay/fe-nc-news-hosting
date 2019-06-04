@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ArticleList from '../articles/articleList';
 import { getArticles } from '../../api';
+import SortByArticle from '../sorting/sortByArticle';
 
 class Home extends Component {
   state = {
@@ -25,16 +26,12 @@ class Home extends Component {
     const { articles } = this.state;
     return (
       <div>
+        <SortByArticle filterArticles={this.props.filterArticles} />
         <h3>Most Popular</h3>
-        {articles && <ArticleList handleVoteClick={this.handleVoteClick} articles={articles} loggedInUser={this.props.loggedInUser} />}
+        {articles && <ArticleList articles={articles} loggedInUser={this.props.loggedInUser} />}
       </div>
     )
   }
-
-  handleVoteClick = props => {
-    console.log('hello')
-  };
-
 };
 
 export default Home;

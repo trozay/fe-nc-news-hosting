@@ -18,23 +18,28 @@ class App extends React.Component {
     query: undefined
   }
 
+  componentDidMount() {
+    const userLoggedIn = localStorage.getItem('username') || null;
+    this.setState({ loggedInUser: userLoggedIn });
+  };
+
   render() {
     const { loggedInUser, query, errMsg } = this.state;
     return (
       <div className="App">
-        <Header filterArticles={this.filterArticles} loggedInUser={loggedInUser} />
+        <Header loggedInUser={loggedInUser} />
 
         {!loggedInUser ? <LoginBar handleLogin={this.handleLogin}
           handleInput={this.handleInput} /> : <SignOut signOut={this.signOut} />}
         {errMsg && <h4>{errMsg}</h4>}
 
-        {loggedInUser && <Link to='/addArticle' ><button>Add Article</button></Link>}
+        {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary'>Add Article</button></Link>}
 
         <Router>
-          <Home path='/' loggedInUser={loggedInUser} query={query} />
-          <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} />
-          <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} />
-          <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} />
+          <Home path='/' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
+          <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
+          <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
+          <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterArticles={this.filterArticles} />
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
         </Router>
       </div>
@@ -57,11 +62,11 @@ class App extends React.Component {
     }
   };
 
-  handleLogin = (e) => {
-    e.preventDefault();
 
-    getUser(e.username)
+  handleLogin = (username) => {
+    getUser(username)
       .then(user => {
+        localStorage.setItem('username', username);
         this.setState({ loggedInUser: user.username, errMsg: null })
       })
       .catch(err => {
