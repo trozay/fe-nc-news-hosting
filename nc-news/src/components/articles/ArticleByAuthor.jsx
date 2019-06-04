@@ -14,14 +14,14 @@ class ArticleByAuthor extends Component {
       .then(articles => this.setState({ articles }));
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const { query } = this.props;
-    console.log(this.props.author, prevProps.author)
-    if (prevProps.author !== this.props.author || prevProps.query !== query) {
-      getArticles({ sort_by: query, author: this.props.author })
-        .then(articles => this.setState({ articles, author: this.props.author }));
-    };
-  };
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { query } = this.props;
+  //   console.log(this.props.author, prevProps.author)
+  //   if (prevProps.author !== this.props.author || prevProps.query !== query) {
+  //     getArticles({ sort_by: query, author: this.props.author })
+  //       .then(articles => this.setState({ articles, author: this.props.author }));
+  //   };
+  // };
 
   render() {
     const { articles } = this.state;

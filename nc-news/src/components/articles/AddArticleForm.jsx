@@ -5,10 +5,6 @@ const AddArticleForm = props => {
     <div>
       <form onSubmit={props.handleSubmit}>
         <label>
-          Username:
-        <input type='text' onChange={props.handleChange} className='usernameInput' />
-        </label>
-        <label>
           Article Title:
           <input type='text' onChange={props.handleChange} className='articleTitleInput' />
         </label>

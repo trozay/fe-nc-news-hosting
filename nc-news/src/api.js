@@ -39,4 +39,12 @@ export const postArticle = ({ author, title, body, topic }) => {
     });
 };
 
+export const postComment = ({ username, body, article_id }) => {
+  return axios.post(`${baseUrl}/articles/${article_id}/comments`, { username, body })
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
+
+
 export default getArticles;

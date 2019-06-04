@@ -8,11 +8,15 @@ export class LoginBar extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleLogin}>
-        <input type='text' onChange={this.props.handleInput} />
+        <input type='text' onChange={this.handleInput} />
         <input type='submit' value='login' />
       </form>
     )
   }
+
+  handleInput = e => {
+    this.setState({ usernameInput: e.target.value });
+  };
 };
 
 export default LoginBar;

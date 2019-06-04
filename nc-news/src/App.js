@@ -1,36 +1,41 @@
 import React from 'react';
 import Header from './components/header';
-import Home from './components/home';
+import Home from './components/pages/home';
 import ArticlesByTopics from './components/articles/ArticlesByTopics';
 import SingleArticle from './components/articles/SingleArticle';
 import ArticleByAuthor from './components/articles/ArticleByAuthor';
+import AddArticle from './components/articles/addArticle';
 import LoginBar from './components/login/LoginBar';
 import SignOut from './components/login/SignOut'
 import { getUser } from './api';
-import { Router } from '@reach/router';
+import { Router, Link } from '@reach/router';
 import './App.css';
 
 class App extends React.Component {
   state = {
-    usernameInput: null,
     loggedInUser: null,
+    errMsg: null,
     query: undefined
   }
 
   render() {
-    const { loggedInUser, query } = this.state;
+    const { loggedInUser, query, errMsg } = this.state;
     return (
       <div className="App">
         <Header filterArticles={this.filterArticles} loggedInUser={loggedInUser} />
 
         {!loggedInUser ? <LoginBar handleLogin={this.handleLogin}
           handleInput={this.handleInput} /> : <SignOut signOut={this.signOut} />}
+        {errMsg && <h4>{errMsg}</h4>}
+
+        {loggedInUser && <Link to='/addArticle' ><button>Add Article</button></Link>}
 
         <Router>
           <Home path='/' loggedInUser={loggedInUser} query={query} />
           <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} />
           <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} />
           <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} />
+          <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
         </Router>
       </div>
     );
@@ -52,18 +57,16 @@ class App extends React.Component {
     }
   };
 
-  handleInput = e => {
-    this.setState({ usernameInput: e.target.value });
-  };
-
   handleLogin = (e) => {
     e.preventDefault();
 
-    getUser(this.state.usernameInput)
+    getUser(e.username)
       .then(user => {
-        this.setState({ loggedInUser: user.name })
+        this.setState({ loggedInUser: user.username, errMsg: null })
       })
-      .catch(this.setState({ loggedInUser: null }))
+      .catch(err => {
+        this.setState({ loggedInUser: null, errMsg: `${err.response.status} - ${err.response.data.msg}` })
+      })
   };
 
   signOut = props => {

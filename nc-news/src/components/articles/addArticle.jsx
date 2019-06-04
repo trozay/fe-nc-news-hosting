@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import AddArticleForm from './AddArticleForm';
 import { getUser, postArticle } from '../../api';
+import { navigate } from '@reach/router';
 
 class AddArticle extends Component {
   state = {
@@ -9,20 +10,14 @@ class AddArticle extends Component {
     bodyInput: null,
     topicInput: null,
     errMsg: null,
-    successMsg: null
   };
 
   render() {
-    const { successMsg, errMsg } = this.state;
+    const { errMsg } = this.state;
     return (
       <Fragment>
         <AddArticleForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
         {errMsg && <h2>{errMsg}</h2>}
-        {successMsg && <div>
-          <h3>Article added by {successMsg.author}</h3>
-          <h5>{successMsg.title}</h5>
-          <h5>{successMsg.topic}</h5>
-        </div>}
       </Fragment>
     )
   }
@@ -32,28 +27,22 @@ class AddArticle extends Component {
   };
 
   handleSubmit = e => {
-    const { usernameInput, articleTitleInput, bodyInput, topicInput } = this.state
+    const { articleTitleInput, bodyInput, topicInput } = this.state;
+    const author = this.props.loggedInUser;
+
     e.preventDefault();
-    getUser(usernameInput)
+    getUser(author)
       .then(user => {
-        return Promise.all([postArticle({ author: usernameInput, title: articleTitleInput, body: bodyInput, topic: topicInput })])
+        return Promise.all([postArticle({ author, title: articleTitleInput, body: bodyInput, topic: topicInput })])
       })
       .then(([article]) => {
-        console.log('article', article.author)
-        this.setState({
-          successMsg: {
-            title: article.title,
-            author: article.author,
-            topic: article.topic
-          },
-          usernameInput: null,
-          articleTitleInput: null,
-          bodyInput: null,
-          topicInput: null,
-          errMsg: null
+        navigate(`/articles/${article.article_id}`, {
+          state: { newArticle: true }
         });
       })
-      .catch(this.setState({ errMsg: 'Invalid Input', successMsg: null }));
+      .catch(err => {
+        this.setState({ errMsg: 'Invalid Input' })
+      });
   };
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router'
 
-export class ArticleList extends React.Component {
+export class ShowSingleArticle extends React.Component {
   render() {
     return (
       <div className='articleInput'>
@@ -13,6 +13,7 @@ export class ArticleList extends React.Component {
                   <div>
                     <Link to={`/articles/${article.article_id}`}><h4>{article.title}</h4></Link>
                     <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>
+                    <p>{article.body}</p>
                     <h6>Votes: {article.votes}</h6>
                     <h6>Comments: {article.comment_count}</h6>
                     {this.props.loggedInUser && <div>
@@ -32,4 +33,4 @@ export class ArticleList extends React.Component {
 }
 
 
-export default ArticleList;
+export default ShowSingleArticle;
