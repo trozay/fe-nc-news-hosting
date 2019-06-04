@@ -67,7 +67,7 @@ class App extends React.Component {
   };
 
   signOut = props => {
-    this.setState({ loggedInUser: null });
+    this.setState({ loggedInUser: null, usernameInput: null });
   };
 }
 

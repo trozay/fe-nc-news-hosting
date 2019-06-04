@@ -14,7 +14,6 @@ class AddArticle extends Component {
 
   render() {
     const { successMsg, errMsg } = this.state;
-    console.log(successMsg)
     return (
       <Fragment>
         <AddArticleForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />

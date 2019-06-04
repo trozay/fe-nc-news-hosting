@@ -17,10 +17,11 @@ class Header extends Component {
 
   render() {
     const { topics } = this.state;
+    const { loggedInUser } = this.props
     return (
       <div>
         <Link to='/'><h1>NC News</h1></Link>
-        {this.props.loggedInUser && <h4>{this.props.loggedInUser}</h4>}
+        {loggedInUser && <h4>{loggedInUser}</h4>}
         <h4>Topics</h4>
         <ul>
           {topics && topics.map((topic, i) => {

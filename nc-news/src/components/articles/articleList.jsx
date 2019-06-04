@@ -6,7 +6,7 @@ export class ArticleList extends React.Component {
   render() {
     return (
       <div className='articleInput'>
-        <AddArticle />
+        {this.props.loggedInUser && <AddArticle />}
 
         <ul>
           {
