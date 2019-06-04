@@ -10,12 +10,13 @@ class ArticleByAuthor extends Component {
 
   componentDidMount() {
     const { query } = this.props;
-    getArticles({ sort_by: query, author: this.state.author })
+    getArticles({ sort_by: query, author: this.props.author })
       .then(articles => this.setState({ articles }));
   };
 
   componentDidUpdate(prevProps, prevState) {
     const { query } = this.props;
+    console.log(this.props.author, prevProps.author)
     if (prevProps.author !== this.props.author || prevProps.query !== query) {
       getArticles({ sort_by: query, author: this.props.author })
         .then(articles => this.setState({ articles, author: this.props.author }));
@@ -23,11 +24,11 @@ class ArticleByAuthor extends Component {
   };
 
   render() {
-    const { articles, author } = this.state;
-    const { loggedInUser } = this.props;
+    const { articles } = this.state;
+    const { loggedInUser, author } = this.props;
     return (
       <div>
-        <h2>{author}s Articles</h2>
+        <h2>{author}'s Articles</h2>
         {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
       </div>
     )
