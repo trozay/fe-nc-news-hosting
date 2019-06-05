@@ -39,20 +39,8 @@ class App extends React.Component {
     );
   }
 
-  filterArticles = (queryBy) => {
-    switch (queryBy) {
-      case 'votes':
-        this.setState({ query: 'votes' });
-        break;
-      case 'comment_count':
-        this.setState({ query: 'comment_count' });
-        break;
-      case 'created_at':
-        this.setState({ query: 'created_at' });
-        break;
-      default:
-        break;
-    }
+  filterArticles = (query) => {
+    this.setState({ query })
   };
 
 
