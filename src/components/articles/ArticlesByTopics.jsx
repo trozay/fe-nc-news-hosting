@@ -28,6 +28,7 @@ class ArticlesByTopics extends Component {
   render() {
     const { articles, maxPage } = this.state;
     const { loggedInUser } = this.props;
+    console.log(this.props.topic)
     return (
       <div>
         <PageButtons maxPages={maxPage} changePage={this.changePage} />
