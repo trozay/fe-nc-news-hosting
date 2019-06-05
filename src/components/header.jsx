@@ -35,7 +35,7 @@ class Header extends Component {
           {loggedInUser && <h4>{loggedInUser}</h4>}
           {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
             handleInput={this.props.handleInput} /> : <SignOut signOut={this.props.signOut} />}
-
+          {this.props.err && <h4>Invalid Username</h4>}
           {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary btn-sm'>Add Article</button></Link>}
         </div>
       </nav>

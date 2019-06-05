@@ -13,8 +13,9 @@ import './App.css';
 class App extends React.Component {
   state = {
     loggedInUser: null,
-    query: undefined
-  }
+    query: undefined,
+    err: null
+  };
 
   componentDidMount() {
     const userLoggedIn = localStorage.getItem('username') || null;
@@ -22,11 +23,11 @@ class App extends React.Component {
   };
 
   render() {
-    const { loggedInUser, query } = this.state;
+    const { loggedInUser, query, err } = this.state;
     return (
       <div className="App">
         <Header loggedInUser={loggedInUser} handleLogin={this.handleLogin}
-          handleInput={this.handleInput} signOut={this.signOut} />
+          handleInput={this.handleInput} signOut={this.signOut} err={err} />
         <Router>
           <Home path='/' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
           <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
@@ -51,7 +52,7 @@ class App extends React.Component {
         this.setState({ loggedInUser: user.username, errMsg: null })
       })
       .catch(err => {
-        this.setState({ loggedInUser: null, errMsg: `${err.response.status} - ${err.response.data.msg}` })
+        this.setState({ loggedInUser: null, err })
       })
   };
 
