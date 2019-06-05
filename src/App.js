@@ -24,6 +24,7 @@ class App extends React.Component {
 
   render() {
     const { loggedInUser, query, err } = this.state;
+    console.log(err)
     return (
       <div className="App">
         <Header loggedInUser={loggedInUser} handleLogin={this.handleLogin}
