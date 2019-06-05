@@ -49,11 +49,7 @@ export const postComment = ({ username, body, id }) => {
 };
 
 export const updateArticleVote = ({ id, inc_votes }) => {
-  return axios.patch(`${baseUrl}/articles/${id}`, { inc_votes })
-    .then(data => {
-      console.log(data, 'dfdfdd')
-      return data
-    });
+  axios.patch(`${baseUrl}/articles/${id}`, { inc_votes });
 };
 
 export const deleteComment = id => {
@@ -62,10 +58,7 @@ export const deleteComment = id => {
 };
 
 export const updateCommentVote = ({ id, inc_votes }) => {
-  return axios.patch(`${baseUrl}/comments/${id}`, { inc_votes })
-    .then(data => {
-      return data
-    });
+  axios.patch(`${baseUrl}/comments/${id}`, { inc_votes })
 };
 
 

@@ -25,9 +25,9 @@ class Header extends Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <Link to='/'><h1>NC News</h1></Link>
         <h6>Topics</h6>
-        <ul className='nav nav-tabs'>
+        <ul className='nav nav-tabs topic-nav'>
           {topics && topics.map((topic, i) => {
-            return <Link to={`/${topic.slug}/articles`}><li key={topic.slug} className='nav-item'><button className='btn btn-primary btn-sm'>{topic.slug}</button></li></Link>
+            return <Link to={`/${topic.slug}/articles`} key={topic.slug}><li className='nav-item'><button className='btn btn-primary btn-sm'>{topic.slug}</button></li></Link>
           })}
         </ul>
         <div className='form-inline login'>
