@@ -16,7 +16,7 @@ const AddArticleForm = props => {
           Body:
           <input type='text' onChange={props.handleChange} className='bodyInput' />
         </label>
-        <button type='submit' className='btn btn-primary'>Post</button>
+        <button type='submit' className='btn btn-primary btn-sm'>Post</button>
       </form>
     </div>
   )

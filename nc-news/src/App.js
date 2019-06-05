@@ -5,6 +5,7 @@ import ArticlesByTopics from './components/articles/ArticlesByTopics';
 import SingleArticle from './components/articles/SingleArticle';
 import ArticleByAuthor from './components/articles/ArticleByAuthor';
 import AddArticle from './components/articles/addArticle';
+import About from './components/pages/About';
 import { getUser } from './api';
 import { Router } from '@reach/router';
 import './App.css';
@@ -32,6 +33,7 @@ class App extends React.Component {
           <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
           <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterArticles={this.filterArticles} query={query} />
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
+          <About path='/about' />
         </Router>
       </div>
     );

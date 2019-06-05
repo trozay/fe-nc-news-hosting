@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleCard from './articleCard';
+import SingleArticleCard from './SingleArticleCard';
 
 export class ShowSingleArticle extends React.Component {
   render() {
@@ -8,7 +8,7 @@ export class ShowSingleArticle extends React.Component {
         <ul>
           {
             this.props.articles.map(article => {
-              return <ArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
+              return <SingleArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
             })
           }
         </ul>

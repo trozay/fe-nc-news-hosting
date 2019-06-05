@@ -6,8 +6,8 @@ export const getArticles = query => {
   return axios.get(`${baseUrl}/articles`, {
     params: query
   })
-    .then(({ data: { articles } }) => {
-      return articles;
+    .then(({ data: { articles, total_count } }) => {
+      return [articles, total_count];
     });
 };
 
@@ -49,7 +49,7 @@ export const postComment = ({ username, body, id }) => {
 };
 
 export const updateArticleVote = ({ id, inc_votes }) => {
-  axios.patch(`${baseUrl}/articles/${id}`, { inc_votes });
+  return axios.patch(`${baseUrl}/articles/${id}`, { inc_votes });
 };
 
 export const deleteComment = id => {
@@ -58,7 +58,7 @@ export const deleteComment = id => {
 };
 
 export const updateCommentVote = ({ id, inc_votes }) => {
-  axios.patch(`${baseUrl}/comments/${id}`, { inc_votes })
+  return axios.patch(`${baseUrl}/comments/${id}`, { inc_votes })
 };
 
 

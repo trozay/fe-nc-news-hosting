@@ -24,6 +24,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <Link to='/'><h1>NC News</h1></Link>
+        <Link to='/about'><button className='btn btn-primary btn-sm'>About</button></Link>
         <h6>Topics</h6>
         <ul className='nav nav-tabs topic-nav'>
           {topics && topics.map((topic, i) => {
@@ -35,7 +36,7 @@ class Header extends Component {
           {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
             handleInput={this.props.handleInput} /> : <SignOut signOut={this.props.signOut} />}
 
-          {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary'>Add Article</button></Link>}
+          {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary btn-sm'>Add Article</button></Link>}
         </div>
       </nav>
     )

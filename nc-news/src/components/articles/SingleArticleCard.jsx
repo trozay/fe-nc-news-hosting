@@ -3,7 +3,7 @@ import { Link } from '@reach/router'
 import VoteButtons from '../votes/VoteButtons'
 import { updateArticleVote } from '../../api'
 
-class ArticleCard extends Component {
+class SingleArticleCard extends Component {
   state = {
     articleVotes: null
   };
@@ -19,6 +19,7 @@ class ArticleCard extends Component {
       <div className='row'>
         <li className='card col-md'>
           <Link to={`/articles/${article.article_id}`}><h4 className='card-title card-header'>{article.title}</h4></Link>
+          <p>{article.body}</p>
           <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>
           <h6>Votes: {articleVotes}</h6>
           <h6>Comments: {article.comment_count}</h6>
@@ -46,4 +47,4 @@ class ArticleCard extends Component {
   };
 };
 
-export default ArticleCard;
+export default SingleArticleCard;

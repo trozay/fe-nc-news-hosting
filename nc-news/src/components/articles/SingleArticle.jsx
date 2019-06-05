@@ -56,7 +56,10 @@ class SingleArticle extends Component {
 
   handleDelete = id => {
     deleteComment(id)
-    this.setState({ comments: this.state.comments.filter(comment => comment.comment_id !== id) })
+    const updatedComments = this.state.comments.filter(comment => comment.comment_id !== id)
+    const updatedArticle = this.state.article
+    updatedArticle.comment_count = updatedComments.length;
+    this.setState({ comments: updatedComments, article: updatedArticle })
   };
 };
 
