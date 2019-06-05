@@ -5,7 +5,6 @@ import AddComment from '../comments/addComment';
 import ShowSingleArticle from './showSingleArticle';
 import SortByComments from '../sorting/SortByComments';
 import { deleteComment } from '../../api';
-import { navigate } from '@reach/router'
 
 class SingleArticle extends Component {
   state = {
@@ -57,12 +56,7 @@ class SingleArticle extends Component {
 
   handleDelete = id => {
     deleteComment(id)
-      .then(deletedComment => {
-        navigate(`/articles/${this.props.id}`, {
-          state: { deletedUser: true }
-        });
-      })
-      .catch(console.dir)
+    this.setState({ comments: this.state.comments.filter(comment => comment.comment_id !== id) })
   };
 };
 

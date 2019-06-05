@@ -1,5 +1,4 @@
 import React from 'react';
-import { updateArticleVote } from '../../api';
 import ArticleCard from './articleCard';
 
 export class ShowSingleArticle extends React.Component {
@@ -15,13 +14,6 @@ export class ShowSingleArticle extends React.Component {
         </ul>
       </div>
     )
-  };
-  handleVoteClick = props => {
-    updateArticleVote(props)
-      .then(updatedVote => {
-        console.log(updatedVote)
-      })
-      .catch(console.dir);
   };
 };
 
