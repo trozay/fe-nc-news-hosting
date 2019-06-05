@@ -54,7 +54,7 @@ export const updateArticleVote = ({ id, inc_votes }) => {
 
 export const deleteComment = id => {
   return axios.delete(`${baseUrl}/comments/${id}`)
-    .then(deletedComment => deletedComment)
+    .then(deletedComment => deletedComment);
 };
 
 export const updateCommentVote = ({ id, inc_votes }) => {
