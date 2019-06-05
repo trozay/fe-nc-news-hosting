@@ -49,7 +49,7 @@ class App extends React.Component {
     getUser(username)
       .then(user => {
         localStorage.setItem('username', username);
-        this.setState({ loggedInUser: user.username, errMsg: null })
+        this.setState({ loggedInUser: user.username, err: null })
       })
       .catch(err => {
         this.setState({ loggedInUser: null, err })
