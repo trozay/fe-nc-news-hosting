@@ -19,6 +19,8 @@ export const getSingleArticle = id => {
 };
 
 export const getCommentsByArticle = (id, query) => {
+  query.sort_by = query.sort_by === 'comment_count' ? 'votes' : undefined;
+  console.log(query, '***')
   return axios.get(`${baseUrl}/articles/${id}/comments`, {
     params: query
   })
