@@ -3,7 +3,7 @@ import AddCommentForm from './AddCommentForm';
 
 class AddComment extends Component {
   state = {
-    body: null,
+    body: '',
     successMsg: null,
     errMsg: null
   };
@@ -25,9 +25,10 @@ class AddComment extends Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
     const { body } = this.state;
     const { loggedInUser, id } = this.props;
-    e.preventDefault();
+    this.setState({ body: '' })
     this.props.handlePostComment({ username: loggedInUser, body, id });
   };
 }

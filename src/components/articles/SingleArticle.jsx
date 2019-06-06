@@ -5,11 +5,13 @@ import AddComment from '../comments/addComment';
 import ShowSingleArticle from './showSingleArticle';
 import SortByComments from '../sorting/SortByComments';
 import { deleteComment, postComment } from '../../api';
+import Error from '../pages/Error';
 
 class SingleArticle extends Component {
   state = {
     article: null,
-    comments: null
+    comments: null,
+    err: null
   };
 
   componentDidMount() {
@@ -21,6 +23,7 @@ class SingleArticle extends Component {
       .then(([article, comments]) => {
         this.setState({ article, comments })
       })
+      .catch((err) => this.setState({ err: { errMsg: 'Article Not Found', errStatus: 404 } }))
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -36,8 +39,9 @@ class SingleArticle extends Component {
   };
 
   render() {
-    const { article, comments } = this.state;
+    const { article, comments, err } = this.state;
     const { loggedInUser } = this.props;
+    if (err) return <Error err={err} />
     return (
       <div>
         {this.props.location.state && this.props.location.state.newArticle && <h4>Article Added!</h4>}
@@ -65,7 +69,7 @@ class SingleArticle extends Component {
   handlePostComment = props => {
     postComment(props)
       .then((comment) => {
-        this.setState({ comments: [comment, [...this.state.comments]] });
+        this.setState({ comments: [comment, ...this.state.comments] });
       })
       .catch(err => this.setState({ errMsg: err }))
   };
