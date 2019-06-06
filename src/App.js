@@ -6,6 +6,7 @@ import SingleArticle from './components/articles/SingleArticle';
 import ArticleByAuthor from './components/articles/ArticleByAuthor';
 import AddArticle from './components/articles/addArticle';
 import About from './components/pages/About';
+import Error from './components/pages/Error'
 import { getUser } from './api';
 import { Router } from '@reach/router';
 import './App.css';
@@ -24,7 +25,6 @@ class App extends React.Component {
 
   render() {
     const { loggedInUser, query, err } = this.state;
-    console.log(err)
     return (
       <div className="App">
         <Header loggedInUser={loggedInUser} handleLogin={this.handleLogin}
@@ -36,6 +36,7 @@ class App extends React.Component {
           <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterArticles={this.filterArticles} query={query} />
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
           <About path='/about' />
+          <Error default />
         </Router>
       </div>
     );
