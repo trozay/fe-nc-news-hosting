@@ -8,7 +8,7 @@ export class LoginBar extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className='form-group'>
-        <input type='text' onChange={this.handleInput} className='form-control' />
+        <input require={true} type='text' onChange={this.handleInput} className='form-control' />
         <button type='submit' value='login' className='btn btn-primary btn-sm'>Log In</button>
       </form>
     )
