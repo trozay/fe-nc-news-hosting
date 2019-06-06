@@ -69,7 +69,9 @@ class SingleArticle extends Component {
   handlePostComment = props => {
     postComment(props)
       .then((comment) => {
-        this.setState({ comments: [comment, ...this.state.comments] });
+        const article = this.state.article
+        article.comment_count = +article.comment_count + 1
+        this.setState({ comments: [comment, ...this.state.comments], article });
       })
       .catch(err => this.setState({ errMsg: err }))
   };
