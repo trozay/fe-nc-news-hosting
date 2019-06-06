@@ -19,7 +19,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const userLoggedIn = localStorage.getItem('username') || null;
+    const userLoggedIn = localStorage.getItem('username') || 'jessjelly';
     this.setState({ loggedInUser: userLoggedIn });
   };
 
