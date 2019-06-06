@@ -4,7 +4,7 @@ import CommentList from '../comments/commentList'
 import AddComment from '../comments/addComment';
 import ShowSingleArticle from './showSingleArticle';
 import SortByComments from '../sorting/SortByComments';
-import { deleteComment, postComment } from '../../api';
+import { deleteComment, postComment, deleteArticle } from '../../api';
 import Error from '../pages/Error';
 
 class SingleArticle extends Component {
@@ -39,26 +39,33 @@ class SingleArticle extends Component {
   };
 
   render() {
-    const { article, comments, err } = this.state;
+    const { article, comments, err, deleteMsg } = this.state;
     const { loggedInUser } = this.props;
     if (err) return <Error err={err} />
+    if (deleteMsg) return <h2>{deleteMsg}</h2>
     return (
       <div>
         {this.props.location.state && this.props.location.state.newArticle && <h4>Article Added!</h4>}
-        {article && <ShowSingleArticle articles={[article]} loggedInUser={loggedInUser} />}
+        {article && <ShowSingleArticle articles={[article]} loggedInUser={loggedInUser} handleArticleDelete={this.handleArticleDelete} />}
         <h3>Comments</h3>
         {loggedInUser && <Fragment>
           <AddComment id={this.props.id} loggedInUser={loggedInUser} handlePostComment={this.handlePostComment} />
         </Fragment>}
         <SortByComments filterArticles={this.props.filterArticles} />
         <ul>
-          {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleDelete={this.handleDelete} />}
+          {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleCommentDelete={this.handleCommentDelete} />}
         </ul>
       </div>
     )
   };
 
-  handleDelete = id => {
+  handleArticleDelete = id => {
+    deleteArticle(id)
+      .then(deletedArticle => this.setState({ deleteMsg: 'Article Deleted' }))
+      .catch(err => console.dir(err))
+  };
+
+  handleCommentDelete = id => {
     deleteComment(id)
     const updatedComments = this.state.comments.filter(comment => comment.comment_id !== id)
     const updatedArticle = this.state.article

@@ -62,5 +62,11 @@ export const updateCommentVote = ({ id, inc_votes }) => {
   return axios.patch(`${baseUrl}/comments/${id}`, { inc_votes })
 };
 
+export const deleteArticle = id => {
+  return axios.delete(`${baseUrl}/articles/${id}`)
+    .then(deletedArticle => deletedArticle);
+};
+
+
 
 export default getArticles;

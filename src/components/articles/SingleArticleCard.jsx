@@ -5,7 +5,8 @@ import { updateArticleVote } from '../../api'
 
 class SingleArticleCard extends Component {
   state = {
-    articleVotes: null
+    articleVotes: null,
+    deleteMsg: null
   };
 
   componentDidMount() {
@@ -13,8 +14,10 @@ class SingleArticleCard extends Component {
   };
 
   render() {
-    const { article } = this.props;
-    const { articleVotes } = this.state;
+    const { article, loggedInUser } = this.props;
+    const { articleVotes, deleteMsg } = this.state;
+    let canDelete;
+    if (deleteMsg) return <h2>{deleteMsg}</h2>
     return (
       <div className='row'>
         <li className='card col-md'>
@@ -23,9 +26,11 @@ class SingleArticleCard extends Component {
           <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>
           <h6>Votes: {articleVotes}</h6>
           <h6>Comments: {article.comment_count}</h6>
-          {this.props.loggedInUser && <VoteButtons
+          {loggedInUser && <VoteButtons
             handleVoteClick={this.handleVoteClick} id={article.article_id} />}
           <p>{article.created_at}</p>
+          {article.author === loggedInUser ? canDelete = true : false}
+          {canDelete && <button className='btn btn-danger btn-sm' onClick={() => this.props.handleArticleDelete(article.article_id)}>Delete</button>}
         </li>
       </div>
     )

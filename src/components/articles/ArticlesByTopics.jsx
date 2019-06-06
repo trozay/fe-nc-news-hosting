@@ -18,10 +18,10 @@ class ArticlesByTopics extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { query } = this.props;
+    const { query, topic } = this.props;
     const { p } = this.state;
-    if (prevProps.topic !== this.props.topic || prevProps.query !== query || prevState.p !== p) {
-      this.fetchArticlesByTopic({ sort_by: query, topic: this.props.topic, p })
+    if (prevProps.topic !== topic || prevProps.query !== query || prevState.p !== p) {
+      this.fetchArticlesByTopic({ sort_by: query, topic, p })
     };
   };
 
@@ -34,7 +34,7 @@ class ArticlesByTopics extends Component {
         <h3>Topic: {this.props.topic}</h3>
         <SortByArticle filterArticles={this.props.filterArticles} />
         <ul>
-          {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
+          {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} handleArticleDelete={this.handleArticleDelete} />}
         </ul>
       </div>
     )

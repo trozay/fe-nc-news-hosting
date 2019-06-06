@@ -6,7 +6,7 @@ class CommentList extends Component {
     const { loggedInUser } = this.props;
     return <ul> {
       this.props.comments.map(comment => {
-        return <CommentCard comment={comment} loggedInUser={loggedInUser} key={comment.comment_id} handleDelete={this.props.handleDelete} />
+        return <CommentCard comment={comment} loggedInUser={loggedInUser} key={comment.comment_id} handleCommentDelete={this.props.handleCommentDelete} />
       })
     }
     </ul>

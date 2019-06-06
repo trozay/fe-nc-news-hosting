@@ -27,7 +27,7 @@ class CommentCard extends Component {
               handleVoteClick={this.handleVoteClick} id={comment.comment_id} />}
             <h6>{comment.created_at}</h6>
             {comment.author === loggedInUser ? canDelete = true : null}
-            {canDelete && <h4 onClick={() => this.props.handleDelete(comment.comment_id)}>Delete</h4>}
+            {canDelete && <button className='btn btn-danger btn-sm' onClick={() => this.props.handleCommentDelete(comment.comment_id)}>Delete</button>}
           </div>
         </li>
       </div>

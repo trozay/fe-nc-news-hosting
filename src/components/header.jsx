@@ -32,7 +32,7 @@ class Header extends Component {
           })}
         </ul>
         <div className='form-inline login'>
-          {loggedInUser && <h4>{loggedInUser}</h4>}
+          {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4>{loggedInUser}</h4></Link>}
           {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
             handleInput={this.props.handleInput} /> : <SignOut signOut={this.props.signOut} />}
           {this.props.err && <h4>Invalid Username</h4>}

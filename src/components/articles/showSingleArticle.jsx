@@ -8,7 +8,7 @@ export class ShowSingleArticle extends React.Component {
         <ul>
           {
             this.props.articles.map(article => {
-              return <SingleArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
+              return <SingleArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} handleArticleDelete={this.props.handleArticleDelete} />
             })
           }
         </ul>
