@@ -4,7 +4,7 @@ import CommentList from '../comments/commentList'
 import AddComment from '../comments/addComment';
 import ShowSingleArticle from './showSingleArticle';
 import SortByComments from '../sorting/SortByComments';
-import { deleteComment } from '../../api';
+import { deleteComment, postComment } from '../../api';
 
 class SingleArticle extends Component {
   state = {
@@ -44,7 +44,7 @@ class SingleArticle extends Component {
         {article && <ShowSingleArticle articles={[article]} loggedInUser={loggedInUser} />}
         <h3>Comments</h3>
         {loggedInUser && <Fragment>
-          <AddComment id={this.props.id} loggedInUser={loggedInUser} />
+          <AddComment id={this.props.id} loggedInUser={loggedInUser} handlePostComment={this.handlePostComment} />
         </Fragment>}
         <SortByComments filterArticles={this.props.filterArticles} />
         <ul>
@@ -61,6 +61,15 @@ class SingleArticle extends Component {
     updatedArticle.comment_count = updatedComments.length;
     this.setState({ comments: updatedComments, article: updatedArticle })
   };
+
+  handlePostComment = props => {
+    postComment(props)
+      .then((comment) => {
+        this.setState({ comments: [comment, [...this.state.comments]] });
+      })
+      .catch(err => this.setState({ errMsg: err }))
+  };
+
 };
 
 export default SingleArticle;

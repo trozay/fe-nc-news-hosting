@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AddCommentForm from './AddCommentForm';
-import { postComment } from '../../api';
 
 class AddComment extends Component {
   state = {
@@ -10,13 +9,13 @@ class AddComment extends Component {
   };
 
   render() {
-    const { successMsg, errMsg, username, body } = this.state;
+    const { errMsg, username, body } = this.state;
     return (
       <div>
         <h5>Add Comment</h5>
-        {!successMsg && <AddCommentForm onChange={this.handleInput} onSubmit={this.handleSubmit} body={body} username={username} />}
+        {<AddCommentForm onChange={this.handleInput} onSubmit={this.handleSubmit} body={body} username={username} />}
         {errMsg && <h4>{errMsg}</h4>}
-        {successMsg && <h4>{successMsg}</h4>}
+        {/* {successMsg && <h4>{successMsg}</h4>} */}
       </div>
     )
   }
@@ -29,11 +28,7 @@ class AddComment extends Component {
     const { body } = this.state;
     const { loggedInUser, id } = this.props;
     e.preventDefault();
-    postComment({ username: loggedInUser, body, id })
-      .then((comment) => {
-        this.setState({ successMsg: "Comment successfully added" });
-      })
-      .catch(err => this.setState({ errMsg: err }))
+    this.props.handlePostComment({ username: loggedInUser, body, id });
   };
 }
 

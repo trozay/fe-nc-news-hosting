@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import AddArticleForm from './AddArticleForm';
 import { getUser, postArticle } from '../../api';
 import { navigate } from '@reach/router';
+import Error from '../pages/Error';
 
 class AddArticle extends Component {
   state = {
@@ -9,15 +10,15 @@ class AddArticle extends Component {
     articleTitleInput: null,
     bodyInput: null,
     topicInput: null,
-    errMsg: null,
+    err: null,
   };
 
   render() {
-    const { errMsg } = this.state;
+    const { err } = this.state;
     return (
       <Fragment>
         <AddArticleForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-        {errMsg && <h2>{errMsg}</h2>}
+        {err && <Error err={err} />}
       </Fragment>
     )
   }
@@ -40,8 +41,8 @@ class AddArticle extends Component {
           state: { newArticle: true }
         });
       })
-      .catch(err => {
-        this.setState({ errMsg: 'Invalid Input' })
+      .catch((err) => {
+        this.setState({ err: { errMsg: 'Topic not found', errStatus: 404 } })
       });
   };
 };
