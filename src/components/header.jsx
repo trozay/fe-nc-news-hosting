@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Axios from 'axios';
 import { Link } from '@reach/router'
 import LoginBar from './login/LoginBar';
 import SignOut from './login/SignOut';
+import { getTopics } from '../api';
 
 class Header extends Component {
   state = {
@@ -11,11 +11,8 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    const url = 'https://new-nc-app.herokuapp.com/api/topics';
-    Axios.get(url)
-      .then(({ data }) => {
-        this.setState({ topics: data.topics })
-      });
+    getTopics()
+      .then(topics => this.setState({ topics }));
   };
 
   render() {

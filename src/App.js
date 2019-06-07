@@ -30,10 +30,10 @@ class App extends React.Component {
         <Header loggedInUser={loggedInUser} handleLogin={this.handleLogin}
           handleInput={this.handleInput} signOut={this.signOut} err={err} />
         <Router>
-          <Home path='/' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
-          <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
-          <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} filterArticles={this.filterArticles} />
-          <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterArticles={this.filterArticles} query={query} />
+          <Home path='/' loggedInUser={loggedInUser} query={query} filterItems={this.filterItems} />
+          <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} filterItems={this.filterItems} />
+          <ArticleByAuthor path='/articles/author/:author' loggedInUser={loggedInUser} query={query} filterItems={this.filterItems} />
+          <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterItems={this.filterItems} query={query} />
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
           <About path='/about' />
           <Error default />
@@ -42,7 +42,7 @@ class App extends React.Component {
     );
   }
 
-  filterArticles = (query) => {
+  filterItems = (query) => {
     this.setState({ query })
   };
 

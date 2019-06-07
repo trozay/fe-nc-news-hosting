@@ -9,7 +9,7 @@ export class ArticleList extends React.Component {
         <ul>
           {
             this.props.articles.map(article => {
-              return <ArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} handleArticleDelete={this.props.handleArticleDelete} />
+              return <ArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
             })
           }
         </ul>

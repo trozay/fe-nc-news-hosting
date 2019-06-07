@@ -67,6 +67,11 @@ export const deleteArticle = id => {
     .then(deletedArticle => deletedArticle);
 };
 
+export const getTopics = props => {
+  return axios.get(`${baseUrl}/topics`)
+    .then(({ data: { topics } }) => topics)
+};
+
 
 
 export default getArticles;

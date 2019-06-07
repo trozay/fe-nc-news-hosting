@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import ArticleList from './articleList';
 import getArticles from '../../api';
-import SortByArticle from '../sorting/sortByArticle';
-import PageButtons from '../pageButtons';
+import RenderArticles from './renderArticles'
 
 class ArticlesByTopics extends Component {
   state = {
@@ -27,18 +25,11 @@ class ArticlesByTopics extends Component {
 
   render() {
     const { articles, maxPage } = this.state;
-    const { loggedInUser } = this.props;
+    const { loggedInUser, query } = this.props;
     return (
-      <div>
-        <PageButtons maxPages={maxPage} changePage={this.changePage} />
-        <h3>Topic: {this.props.topic}</h3>
-        <SortByArticle filterArticles={this.props.filterArticles} />
-        <ul>
-          {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} handleArticleDelete={this.handleArticleDelete} />}
-        </ul>
-      </div>
+      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`Topic: ${this.props.topic}`} query={query} />
     )
-  }
+  };
 
   fetchArticlesByTopic = (query) => {
     getArticles(query)

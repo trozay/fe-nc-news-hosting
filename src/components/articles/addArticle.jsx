@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import AddArticleForm from './AddArticleForm';
-import { getUser, postArticle } from '../../api';
+import { postArticle } from '../../api';
 import { navigate } from '@reach/router';
 import Error from '../pages/Error';
 
@@ -16,10 +16,10 @@ class AddArticle extends Component {
   render() {
     const { err } = this.state;
     return (
-      <Fragment>
+      <div>
         <AddArticleForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
         {err && <Error err={err} />}
-      </Fragment>
+      </div>
     )
   }
 
@@ -30,19 +30,16 @@ class AddArticle extends Component {
   handleSubmit = e => {
     const { articleTitleInput, bodyInput, topicInput } = this.state;
     const author = this.props.loggedInUser;
-
     e.preventDefault();
-    getUser(author)
-      .then(user => {
-        return Promise.all([postArticle({ author, title: articleTitleInput, body: bodyInput, topic: topicInput })])
-      })
-      .then(([article]) => {
+    postArticle({ author, title: articleTitleInput, body: bodyInput, topic: topicInput })
+      .then((article) => {
         navigate(`/articles/${article.article_id}`, {
           state: { newArticle: true }
         });
       })
-      .catch((err) => {
-        this.setState({ err: { errMsg: 'Topic not found', errStatus: 404 } })
+      .catch(err => {
+        if (err.response.status === 404) this.setState({ err: { errMsg: 'Topic Not found', errStatus: 404 } });
+        else this.setState({ err: { errMsg: err, status: err.response.status } })
       });
   };
 };

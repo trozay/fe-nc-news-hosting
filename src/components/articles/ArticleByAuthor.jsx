@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import getArticles from '../../api';
-import ArticleList from './articleList'
-import SortByArticle from '../sorting/sortByArticle';
-import PageButtons from '../pageButtons';
+import RenderArticles from './renderArticles';
 
 class ArticleByAuthor extends Component {
   state = {
@@ -28,14 +26,9 @@ class ArticleByAuthor extends Component {
 
   render() {
     const { articles, maxPage } = this.state;
-    const { loggedInUser, author } = this.props;
+    const { loggedInUser, author, query } = this.props;
     return (
-      <div>
-        <PageButtons maxPages={maxPage} changePage={this.changePage} />
-        <SortByArticle filterArticles={this.props.filterArticles} />
-        <h2>{author}'s Articles</h2>
-        {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
-      </div>
+      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`${author}s Articles`} query={query} />
     )
   }
 
