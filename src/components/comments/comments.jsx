@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { deleteComment, postComment } from '../../api'
 import AddComment from '../comments/addComment'
-import SortByComments from '../sorting/SortByComments'
+import SortBy from '../sorting/SortBy'
 import CommentList from '../comments/commentList'
 import { getCommentsByArticle } from '../../api'
 
@@ -27,13 +27,13 @@ export default class Comments extends Component {
   };
 
   render() {
-    const { loggedInUser, id, filterArticles, query } = this.props;
+    const { loggedInUser, id, filterItems, query } = this.props;
     const { comments } = this.state;
     return (
       <div>
         <h3>Comments</h3>
         {loggedInUser && <AddComment id={id} loggedInUser={loggedInUser} handlePostComment={this.handlePostComment} />}
-        <SortByComments filterArticles={filterArticles} query={query} />
+        <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'created at']} />
         <ul>
           {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleCommentDelete={this.handleCommentDelete} />}
         </ul>

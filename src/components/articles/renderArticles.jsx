@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SortByArticle from '../sorting/sortByArticle';
+import SortBy from '../sorting/SortBy';
 import PageButtons from '../pageButtons';
 import ArticleList from './articleList';
 
@@ -10,7 +10,7 @@ export default class RenderArticles extends Component {
       <div>
         <PageButtons maxPages={maxPage} changePage={changePage} />
         <h3>{title}</h3>
-        <SortByArticle filterItems={filterItems} query={query} />
+        <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'comment count', 'created at']} />
         <ul>
           {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
         </ul>

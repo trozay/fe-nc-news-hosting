@@ -28,7 +28,7 @@ class ArticleCard extends Component {
           <h6>Comments: {article.comment_count}</h6>
           {loggedInUser && <VoteButtons
             handleVoteClick={this.handleVoteClick} id={article.article_id} />}
-          <p>{article.created_at}</p>
+          <p>{article.created_at.slice(0, 10)}</p>
           {article.author === loggedInUser ? canDelete = true : false}
           {canDelete && <button className='btn btn-danger btn-sm' onClick={() => this.handleArticleDelete(article.article_id)}>Delete</button>}
         </li>

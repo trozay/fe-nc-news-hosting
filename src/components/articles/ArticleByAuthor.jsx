@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import getArticles from '../../api';
+import getArticles, { getUser } from '../../api';
 import RenderArticles from './renderArticles';
+import Error from '../pages/Error';
 
 class ArticleByAuthor extends Component {
   state = {
     author: null,
     articles: null,
     p: 1,
-    maxPage: null
+    maxPage: null,
+    err: null
   };
 
   componentDidMount() {
@@ -25,14 +27,21 @@ class ArticleByAuthor extends Component {
   };
 
   render() {
-    const { articles, maxPage } = this.state;
+    const { articles, maxPage, err } = this.state;
     const { loggedInUser, author, query } = this.props;
+    if (err) return <Error err={err} />
     return (
       <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`${author}s Articles`} query={query} />
     )
   }
 
   fetchArticlesByAuthor = (query) => {
+    getUser(this.props.author)
+      .catch(err => this.setState({
+        err: {
+          errMsg: 'Invalid User', errStatus: 400
+        }
+      }))
     getArticles(query)
       .then(([articles, maxPage]) => {
         this.setState({ articles, author: this.props.author, maxPage: Math.ceil(maxPage / 10) })

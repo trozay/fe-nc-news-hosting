@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
-import getArticles from '../../api';
-import RenderArticles from './renderArticles'
+import React, { Component } from 'react';
+import getArticles, { getTopics } from '../../api';
+import RenderArticles from './renderArticles';
+import Error from '../pages/Error';
 
 class ArticlesByTopics extends Component {
   state = {
     articles: null,
     maxPage: null,
-    p: 1
+    p: 1,
+    err: null
   }
 
   componentDidMount() {
@@ -24,14 +26,20 @@ class ArticlesByTopics extends Component {
   };
 
   render() {
-    const { articles, maxPage } = this.state;
+    const { articles, maxPage, err } = this.state;
     const { loggedInUser, query } = this.props;
+    if (err) return <Error err={err} />
     return (
       <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`Topic: ${this.props.topic}`} query={query} />
     )
   };
 
   fetchArticlesByTopic = (query) => {
+    getTopics()
+      .then(topics => {
+        let indexOfTopic = topics.findIndex(topic => topic.slug === this.props.topic)
+        if (indexOfTopic === -1) this.setState({ err: { errMsg: 'Invalid Topic', errStatus: 400 } })
+      })
     getArticles(query)
       .then(([articles, maxPage]) => {
         this.setState({ articles, maxPage: Math.ceil(maxPage / 10) })

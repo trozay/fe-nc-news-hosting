@@ -15,7 +15,7 @@ class SingleArticle extends Component {
     getSingleArticle(this.props.id)
       .then(article => article)
       .then(article => this.setState({ article }))
-      .catch((err) => this.setState({ err: { errMsg: 'Article Not Found', errStatus: 404 } }))
+      .catch((err) => this.setState({ err: { errMsg: 'Article Not Found', errStatus: 400 } }))
   };
 
   render() {
