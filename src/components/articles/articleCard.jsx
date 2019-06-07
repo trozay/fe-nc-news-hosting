@@ -20,7 +20,7 @@ class ArticleCard extends Component {
     let canDelete;
     if (deleteMsg) return <h2>{deleteMsg}</h2>
     return (
-      <div className='row'>
+      <div className='row articleCard'>
         <li className='card col-md'>
           <Link to={`/articles/${article.article_id}`}><h4 className='card-title card-header'>{article.title}</h4></Link>
           <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>

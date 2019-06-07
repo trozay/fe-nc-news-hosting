@@ -24,3 +24,41 @@ button {
 .login {
   text-align: end;
 }
+
+li {
+  margin-left: 6%;
+  margin-right: 13%;
+}
+
+.singleArticle {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 375px) {
+
+  .header h1 {
+    font-size: 30px;
+  }
+
+  .loggedInUser {
+    display: none;
+  }
+
+ul {
+  padding: 0px;
+}
+
+.topicsHeader {
+  display: none;
+}
+
+  .articleCard {
+    width: 375px;
+    margin-left:0px;
+    padding-left: 0px;
+    padding-right: 10px;
+  }
+}

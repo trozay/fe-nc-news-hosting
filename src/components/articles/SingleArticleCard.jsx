@@ -19,7 +19,7 @@ class SingleArticleCard extends Component {
     let canDelete;
     if (deleteMsg) return <h2>{deleteMsg}</h2>
     return (
-      <div className='row card col-md'>
+      <div className='row card col-md singleArticle'>
         <Link to={`/articles/${article.article_id}`}><h4 className='card-title card-header'>{article.title}</h4></Link>
         <p>{article.body}</p>
         <Link to={`/articles/author/${article.author}`}><h6>Author: {article.author}</h6></Link>
