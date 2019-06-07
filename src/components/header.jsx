@@ -31,7 +31,7 @@ class Header extends Component {
         <div className='form-inline login'>
           {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4>{loggedInUser}</h4></Link>}
           {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
-            handleInput={this.props.handleInput} /> : <SignOut signOut={this.props.signOut} />}
+            handleInput={this.props.handleInput} loggedInUser={loggedInUser} /> : <SignOut signOut={this.props.signOut} />}
           {this.props.err && <h4>Invalid Username</h4>}
           {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary btn-sm'>Add Article</button></Link>}
         </div>
