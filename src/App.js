@@ -14,7 +14,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     loggedInUser: null,
-    query: undefined,
+    query: 'votes',
     err: null
   };
 
