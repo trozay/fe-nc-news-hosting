@@ -26,7 +26,7 @@ class Home extends Component {
     const { articles, maxPage } = this.state;
     const { query } = this.props;
     return (
-      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={this.props.loggedInUser} query={query} />
+      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={this.props.loggedInUser} query={query} title={'Most Popular'} />
     )
   };
 

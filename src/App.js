@@ -19,7 +19,11 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const userLoggedIn = localStorage.getItem('username') || 'jessjelly';
+    const userLoggedIn = localStorage.getItem('user') || {
+      username: 'jessjelly',
+      name: 'Jess Jelly',
+      avatar_url: 'https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg',
+    };
     this.setState({ loggedInUser: userLoggedIn });
   };
 
@@ -56,8 +60,8 @@ class App extends React.Component {
   handleLogin = (username) => {
     getUser(username)
       .then(user => {
-        localStorage.setItem('username', username);
-        this.setState({ loggedInUser: user.username, err: null })
+        localStorage.setItem('user', user);
+        this.setState({ loggedInUser: user, err: null })
       })
       .catch(err => {
         this.setState({ loggedInUser: null, err })
