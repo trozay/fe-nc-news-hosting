@@ -133,6 +133,7 @@ ul {
   }
 
   .mobile-header {
+    display: block;
     margin-bottom: 20px;
   }
 
