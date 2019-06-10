@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = props => {
   return (
-    <div>
+    <div className='about-page'>
       <h1>About</h1>
       <h2><a href="https://react-nc-news.netlify.com/">Hosted Version of this site</a></h2>
       <h2><a href="https://new-nc-app.herokuapp.com/api/">Hosted Version of my back end api</a></h2>

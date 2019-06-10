@@ -5,15 +5,13 @@ export class ArticleList extends React.Component {
 
   render() {
     return (
-      <div className='container articlesContainer'>
-        <ul>
-          {
-            this.props.articles.map(article => {
-              return <ArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
-            })
-          }
-        </ul>
-      </div >
+      <ul className='container articlesContainer'>
+        {
+          this.props.articles.map(article => {
+            return <ArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
+          })
+        }
+      </ul>
     )
   }
 };

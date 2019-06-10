@@ -2,38 +2,27 @@ import React, { Component } from 'react'
 import { Link } from '@reach/router'
 import LoginBar from './login/LoginBar';
 import SignOut from './login/SignOut';
-import { getTopics } from '../api';
 
 class Header extends Component {
-  state = {
-    topics: null,
-    errMsg: null
-  };
-
-  componentDidMount() {
-    getTopics()
-      .then(topics => this.setState({ topics }));
-  };
-
   render() {
-    const { topics } = this.state;
     const { loggedInUser } = this.props
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <Link to='/'><h1>NC News</h1></Link>
-        <Link to='/about'><button className='btn btn-primary btn-sm'>About</button></Link>
-        <h6 className='topicsHeader'>Topics</h6>
-        <ul className='nav nav-tabs topic-nav'>
-          {topics && topics.map((topic, i) => {
-            return <Link to={`/${topic.slug}/articles`} key={topic.slug}><li className='nav-item'><button className='btn btn-outline-primary btn-sm'>{topic.slug}</button></li></Link>
-          })}
-        </ul>
+        <div className='headerPages'>
+          {/* <Link to='/about'><button className='btn btn-outline-primary btn-sm about-link'>About</button></Link>
+          <Link to='/topics'><button className='topicsHeader btn btn-outline-primary btn-sm dontDisplay'>Topics</button></Link> */}
+        </div>
         <div className='form-inline login'>
           {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4 className='loggedInUser'>{loggedInUser}</h4></Link>}
-          {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
-            handleInput={this.props.handleInput} loggedInUser={loggedInUser} /> : <SignOut signOut={this.props.signOut} />}
-          {this.props.err && <h4>Invalid Username</h4>}
-          {loggedInUser && <Link to='/addArticle' ><button className='btn btn-primary btn-sm'>Add Article</button></Link>}
+          <div className='headerLinks'>
+            {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
+              handleInput={this.props.handleInput} loggedInUser={loggedInUser} /> : <SignOut signOut={this.props.signOut} />}
+            {this.props.err && <h4>Invalid Username</h4>}
+            {loggedInUser && <Link to='/addArticle' ><button className='btn btn-outline-primary btn-sm'>Add Article</button></Link>}
+            <Link to='/about'><button className='btn btn-outline-primary btn-sm about-link'>About</button></Link>
+            <Link to='/topics'><button className='topicsHeader btn btn-outline-primary btn-sm dontDisplay'>Topics</button></Link>
+          </div>
         </div>
       </nav>
     )

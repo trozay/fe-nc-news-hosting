@@ -18,8 +18,8 @@ class CommentCard extends Component {
     const { commentVotes } = this.state;
     return (
       <div>
-        <li>
-          <div className='card commentContainer'>
+        <li className='commentContainer'>
+          <div className='card'>
             <Link to={`/articles/author/${comment.author}`}><h6 className='card-header'>Author: {comment.author}</h6></Link>
             <p className='card-body'>{comment.body}</p>
             <h6>Votes: {commentVotes}</h6>

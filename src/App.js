@@ -8,9 +8,9 @@ import AddArticle from './components/articles/addArticle';
 import About from './components/pages/About';
 import Error from './components/pages/Error'
 import { getUser } from './api';
-import { Router } from '@reach/router';
+import { Router, Link } from '@reach/router';
 import './App.css';
-
+import Topics from './components/pages/topics'
 class App extends React.Component {
   state = {
     loggedInUser: null,
@@ -29,6 +29,11 @@ class App extends React.Component {
       <div className="App">
         <Header loggedInUser={loggedInUser} handleLogin={this.handleLogin}
           handleInput={this.handleInput} signOut={this.signOut} err={err} />
+        <div className='mobile-header'>
+          <Link to='/about'><button className='btn btn-outline-primary btn-sm'>About</button></Link>
+          <Link to='/topics'><button className='btn btn-outline-primary btn-sm'>Topics</button></Link>
+
+        </div>
         <Router>
           <Home path='/' loggedInUser={loggedInUser} query={query} filterItems={this.filterItems} />
           <ArticlesByTopics path='/:topic/articles' loggedInUser={loggedInUser} query={query} filterItems={this.filterItems} />
@@ -36,6 +41,7 @@ class App extends React.Component {
           <SingleArticle path='/articles/:id' loggedInUser={loggedInUser} filterItems={this.filterItems} query={query} />
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
           <About path='/about' />
+          <Topics path='/topics' />
           <Error default />
         </Router>
       </div>

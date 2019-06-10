@@ -21,8 +21,15 @@ button {
   margin: 5px;
 } 
 
+.headaerPages {
+  background-color:  red;
+  padding: 500px;
+}
+
 .login {
   text-align: end;
+  position: absolute;
+  right: 0;
 }
 
 li {
@@ -37,28 +44,114 @@ li {
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 375px) {
+.topics-list {
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 3em;
+}
+
+.topics-page {
+  display: flex;
+}
+
+.mobile-header {
+  display: none;
+}
+
+.articlesContainer {
+  text-align: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 0px;
+}
+
+@media only screen and (max-width: 450px) {
 
   .header h1 {
     font-size: 30px;
   }
 
+  .header {
+    margin-bottom: 1em;
+  }
+
+  .headerLinks {
+    /* margin-left: 40px; */
+    /* justify-content: end; */
+    position: absolute; 
+    right: 20px;
+  }
+
   .loggedInUser {
+    display: none;
+  }
+ 
+  .dontDisplay {
     display: none;
   }
 
 ul {
   padding: 0px;
-}
-
-.topicsHeader {
-  display: none;
+  /* margin: 0px;
+  width: 100vw; */
 }
 
   .articleCard {
-    width: 375px;
-    margin-left:0px;
-    padding-left: 0px;
-    padding-right: 10px;
+    width: 90%;
+    margin-left:5%;
+    margin-right: 5%;
+    padding: 0px;
   }
+
+  .commentContainer {
+    width: 90%;
+    margin-left:5%;
+    margin-right: 5%;
+    padding: 0px;
+    /* padding-right: 10px; */
+  }
+
+  .header .btn-sm {
+    width: 45px;
+    height: 30px;
+    font-size: 8px;
+    margin: 5px; 
+    padding: 0px;
+  }
+
+  .login {
+    width: 50%;
+  }
+
+  .about-link {
+    display: none;
+  }
+
+  .displayTopics {
+    display: none;
+  }
+
+  .mobile-header {
+    margin-bottom: 20px;
+  }
+
+  .login-input{
+    width: 175px;
+    margin: 0px;
+  }
+
+  .login-btn {
+   display: none;
+  }
+
+  .form-group {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .about-page h2{
+    font-size: 20px;
+  }
+
 }

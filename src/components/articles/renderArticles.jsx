@@ -11,9 +11,7 @@ export default class RenderArticles extends Component {
         <PageButtons maxPages={maxPage} changePage={changePage} />
         <h3>{title}</h3>
         <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'comment count', 'created at']} />
-        <ul>
-          {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
-        </ul>
+        {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
       </div>
     )
   }
