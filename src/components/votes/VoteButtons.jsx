@@ -17,8 +17,19 @@ export default class VoteButton extends Component {
   };
 
   handleVoteButtons = (direction) => {
-    this.props.handleVoteClick(direction)
+    const { changedBy } = this.state
     this.setState({ changedBy: direction.inc_votes })
+    if (changedBy === 1) direction.inc_votes = -2;
+    if (changedBy === -1) direction.inc_votes = 2;
+
+    switch (direction.inc_votes) {
+      case changedBy === 1 && direction.inc_votes === 1:
+        console.log('hello')
+        break;
+      default:
+        break;
+    }
+    this.props.handleVoteClick(direction)
   };
 };
 
