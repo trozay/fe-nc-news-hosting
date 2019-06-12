@@ -4,6 +4,7 @@ import SingleArticleCard from './SingleArticleCard';
 import { deleteArticle } from '../../api';
 import Error from '../pages/Error';
 import Comments from '../comments/comments';
+import Loader from 'react-loader-spinner'
 
 class SingleArticle extends Component {
   state = {
@@ -25,6 +26,10 @@ class SingleArticle extends Component {
     if (deleteMsg) return <h2>{deleteMsg}</h2>
     return (
       <div>
+        {!article && <Loader type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100" />}
         {this.props.location.state && this.props.location.state.newArticle && <h4>Article Added!</h4>}
         {article && <SingleArticleCard article={article} loggedInUser={loggedInUser} key={article.article_id} handleArticleDelete={this.handleArticleDelete} />}
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import getArticles, { getTopics } from '../../api';
 import RenderArticles from './renderArticles';
 import Error from '../pages/Error';
@@ -30,7 +30,13 @@ class ArticlesByTopics extends Component {
     const { loggedInUser, query } = this.props;
     if (err) return <Error err={err} />
     return (
-      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`Topic: ${this.props.topic}`} query={query} />
+      <Fragment>
+        {!articles && <Loader type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100" />}
+        <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`Topic: ${this.props.topic}`} query={query} />
+      </Fragment>
     )
   };
 

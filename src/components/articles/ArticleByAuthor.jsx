@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import getArticles, { getUser } from '../../api';
 import RenderArticles from './renderArticles';
 import Error from '../pages/Error';
+import Loader from 'react-loader-spinner'
 
 class ArticleByAuthor extends Component {
   state = {
@@ -31,7 +32,13 @@ class ArticleByAuthor extends Component {
     const { loggedInUser, author, query } = this.props;
     if (err) return <Error err={err} />
     return (
-      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`${author}s Articles`} query={query} />
+      <Fragment>
+        {!articles && <Loader type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100" />}
+        <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={loggedInUser} title={`${author}s Articles`} query={query} />
+      </Fragment>
     )
   }
 

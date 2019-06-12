@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getTopics } from '../../api'
 import { Link } from '@reach/router'
+import Loader from 'react-loader-spinner'
 
 export default class Topics extends Component {
   state = {
@@ -20,6 +21,10 @@ export default class Topics extends Component {
     return (
       <div className='topic-page'>
         <h4>Topics</h4>
+        {!topics && <Loader type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100" />}
         <input type='text' onChange={this.handleChange} />
         <ul className='nav nav-tabs topic-nav topics-list'>
           {topics && filteredTopics.map((topic, i) => {
