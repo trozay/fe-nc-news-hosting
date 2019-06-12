@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import getArticles, { getTopics } from '../../api';
 import RenderArticles from './renderArticles';
 import Error from '../pages/Error';
+import Loader from 'react-loader-spinner'
 
 class ArticlesByTopics extends Component {
   state = {
