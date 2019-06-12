@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { getArticles } from '../../api';
 import RenderArticles from '../articles/renderArticles';
-import Loader from 'react-loader-spinner'
 
 class Home extends Component {
   state = {
@@ -27,13 +26,7 @@ class Home extends Component {
     const { articles, maxPage } = this.state;
     const { query } = this.props;
     return (
-      <Fragment>
-        {!articles && <Loader type="Puff"
-          color="#00BFFF"
-          height="100"
-          width="100" />}
-        <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={this.props.loggedInUser} query={query} title={'Most Popular'} />
-      </Fragment>
+      <RenderArticles maxPages={maxPage} changePage={this.changePage} filterItems={this.props.filterItems} articles={articles} loggedInUser={this.props.loggedInUser} query={query} title={'Most Popular'} />
     )
   };
 
