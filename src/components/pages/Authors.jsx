@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Loader from 'react-loader-spinner'
 import { getAllUsers } from '../../api'
+import { Link } from '@reach/router'
 
 export default class Authors extends Component {
   state = {
@@ -16,6 +17,7 @@ export default class Authors extends Component {
 
   render() {
     const { authors } = this.state;
+    console.log(authors)
     return (
       <div>
         <h1>Most Popular Authors</h1>
@@ -23,6 +25,18 @@ export default class Authors extends Component {
           color="#00BFFF"
           height="100"
           width="100" />}
+        <ul>
+          {authors && authors.map(author => {
+            return <li key={`authors${author.username}`}>
+              <Link to={`/articles/author/${author.username}`}>
+                <div>
+                  <h2>{author.name}</h2>
+                  <img src={`${author.avatar_url}`} alt={`${author.name} avatar`} />
+                </div>
+              </Link>
+            </li>
+          })}
+        </ul>
       </div>
     )
   }
