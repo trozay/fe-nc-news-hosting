@@ -87,6 +87,24 @@ button {
   margin-right: 5px;
 }
 
+.articleInput {
+  border: solid 1px #D3D3D3;
+  border-radius: 5px;
+  width: 40vw;
+  height: 5vh;
+  margin: 0.5em 8em;
+}
+
+.articleLabel {
+  height: 3em;
+  width: 3em;
+  margin-left: 15vw;
+}
+
+.titleInput {
+  margin-left: 11vw;
+}
+
 @media only screen and (max-width: 600px) {
 
   .header h1 {
