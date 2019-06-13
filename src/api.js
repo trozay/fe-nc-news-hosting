@@ -32,6 +32,14 @@ export const getUser = username => {
     .then(({ data: { user } }) => user)
 };
 
+export const getAllUsers = () => {
+  return axios.get(`${baseUrl}/users`)
+    .then(({ data: { users } }) => {
+      return users
+    })
+};
+
+
 export const postArticle = ({ author, title, body, topic }) => {
   return axios.post(`${baseUrl}/articles`, {
     author, title, topic, body

@@ -5,7 +5,7 @@ const PageButtons = props => {
   return (
     <div>
       {totalPages.map((page, i) => {
-        return <button key={i + 1} onClick={() => props.changePage(i + 1)}>{i + 1}</button>
+        return <button key={i + 1} onClick={() => props.changePage(i + 1)} className='btn btn-outline-primary btn-sm'>{i + 1}</button>
       })}
     </div>
   );

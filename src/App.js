@@ -6,11 +6,13 @@ import SingleArticle from './components/articles/SingleArticle';
 import ArticleByAuthor from './components/articles/ArticleByAuthor';
 import AddArticle from './components/articles/addArticle';
 import About from './components/pages/About';
-import Error from './components/pages/Error'
+import Error from './components/pages/Error';
 import { getUser } from './api';
 import { Router, Link } from '@reach/router';
 import './App.css';
-import Topics from './components/pages/topics'
+import Topics from './components/pages/topics';
+import Authors from './components/pages/Authors';
+
 class App extends React.Component {
   state = {
     loggedInUser: null,
@@ -42,6 +44,7 @@ class App extends React.Component {
           <AddArticle path='/addArticle' loggedInUser={loggedInUser} />
           <About path='/about' />
           <Topics path='/topics' />
+          <Authors path='/authors' />
           <Error default />
         </Router>
       </div>

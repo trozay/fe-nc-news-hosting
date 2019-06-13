@@ -30,6 +30,7 @@ class Header extends Component {
             {loggedInUser && <Link to='/addArticle' ><button className='btn btn-outline-primary btn-sm'>Add Article</button></Link>}
             <Link to='/about'><button className='btn btn-outline-primary btn-sm about-link'>About</button></Link>
             <Link to='/topics'><button className='topicsHeader btn btn-outline-primary btn-sm dontDisplay'>Topics</button></Link>
+            <Link to='/authors'><button className='btn btn-outline-primary btn-sm dontDisplay'>Authors</button></Link>
           </div>
         </div>
       </nav>
