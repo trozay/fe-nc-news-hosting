@@ -34,3 +34,7 @@ This will deploy the site to your actual url: `https://your-site-name.netlify.co
 * [React](https://reactjs.org/)
 * HTML
 * CSS
+
+## Author
+
+Thomas Robinson
