@@ -32,8 +32,8 @@ This will deploy the site to your actual url: `https://your-site-name.netlify.co
 ## Built With
 
 * [React](https://reactjs.org/)
-* HTML
-* CSS
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 ## Author
 
