@@ -8,7 +8,6 @@ Install Netlify's CLI
 
 ```
 npm install netlify-cli -g
-
 ```
 ### Deploy a Draft Version
 
