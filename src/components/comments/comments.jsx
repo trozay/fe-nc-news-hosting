@@ -29,9 +29,10 @@ export default class Comments extends Component {
     const { comments } = this.state;
     return (
       <div>
-        <h3>Comments</h3>
+        {comments && comments.length !== 0 && <h3>Comments</h3>}
+        {comments && comments.length === 0 && <h3>Be the first to comment on this article!</h3>}
         {loggedInUser && <AddComment id={id} loggedInUser={loggedInUser} handlePostComment={this.handlePostComment} />}
-        <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'created at']} />
+        {comments && comments.length !== 0 && <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'created at']} />}
         <ul>
           {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleCommentDelete={this.handleCommentDelete} />}
         </ul>
