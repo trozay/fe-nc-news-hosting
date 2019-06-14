@@ -24,7 +24,8 @@ class AddArticle extends Component {
   }
 
   handleChange = e => {
-    this.setState({ [e.target.className]: e.target.value })
+    const inputType = e.target.className.split(' ')[0]
+    this.setState({ [inputType]: e.target.value })
   };
 
   handleSubmit = e => {
@@ -38,7 +39,7 @@ class AddArticle extends Component {
         });
       })
       .catch(err => {
-        if (err.response.status === 404) this.setState({ err: { errMsg: 'Topic Not found', errStatus: 404 } });
+        if (err.response.status === 404) this.setState({ err: { errMsg: 'Topic Not found', errStatus: 404 } })
         else this.setState({ err: { errMsg: err, status: err.response.status } })
       });
   };

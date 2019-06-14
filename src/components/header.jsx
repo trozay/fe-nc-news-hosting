@@ -2,22 +2,14 @@ import React, { Component } from 'react'
 import { Link } from '@reach/router'
 import LoginBar from './login/LoginBar';
 import SignOut from './login/SignOut';
-import { getUser } from '../api';
 
 class Header extends Component {
   state = {
     user: null
   };
 
-  componentDidMount() {
-    getUser(this.props.loggedInUser)
-      .then(user => console.log(user))
-  }
-
-
   render() {
     const { loggedInUser } = this.props
-    console.log(loggedInUser)
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <Link to='/'><h1>NC News</h1></Link>

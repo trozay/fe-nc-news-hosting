@@ -4,7 +4,6 @@ import AddComment from '../comments/addComment'
 import SortBy from '../sorting/SortBy'
 import CommentList from '../comments/commentList'
 import { getCommentsByArticle } from '../../api'
-import Loader from 'react-loader-spinner'
 
 export default class Comments extends Component {
   state = {
@@ -31,10 +30,6 @@ export default class Comments extends Component {
     return (
       <div>
         <h3>Comments</h3>
-        {!comments && <Loader type="Puff"
-          color="#00BFFF"
-          height="100"
-          width="100" />}
         {loggedInUser && <AddComment id={id} loggedInUser={loggedInUser} handlePostComment={this.handlePostComment} />}
         <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'created at']} />
         <ul>

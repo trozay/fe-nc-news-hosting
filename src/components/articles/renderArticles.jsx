@@ -15,7 +15,7 @@ export default class RenderArticles extends Component {
           color="#00BFFF"
           height="100"
           width="100" />}
-        <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'comment count', 'created at']} />
+        {articles && <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'comment count', 'created at']} />}
         {articles && <ArticleList articles={articles} loggedInUser={loggedInUser} />}
       </div>
     )
