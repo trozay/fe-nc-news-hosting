@@ -3,107 +3,77 @@ body {
   padding: 0;
   text-align: center;
   color: #007BFF;
+  display: grid;
 }
 
 h1 h2 h3 h4 h5 h6 p {
   color: #007BFF;
 }
 
-.header img {
-  width: 40px;
-}
-
-
 li {
   list-style-type: none;
-  margin: 1em;
-  margin-left: 6%;
-  margin-right: 13%;
-}
-
-.header {
-  margin-bottom: 3em;
-  color: #007BFF;
-}
-
-.header h1{
-  margin-right: 1em;
-}
-
-button {
-  margin: 5px;
-} 
-
-.headaerPages {
-  background-color:  red;
-  padding: 500px;
-}
-
-.login {
-  text-align: end;
-  position: absolute;
-  right: 0;
-}
-
-.singleArticle {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 20px;
-}
-
-.topics-list {
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-top: 3em;
-}
-
-.topics-page {
-  display: flex;
 }
 
 .mobile-header {
   display: none;
 }
 
-.articlesContainer {
-  text-align: center;
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+.headerLinks {
+  position: absolute;
+  right: 0;
+  margin: auto 30px;
+}
+
+.headerLinks .btn {
+  margin: auto 0.2em;
+}
+
+.headerLinks .loggedInUser {
+  margin-right: 0.5em;
+}
+
+.articlesPageTitle {
+  margin: 0.6em auto;
+}
+
+.sortByTitle {
+  margin-top: 0.7em;
+}
+
+.sortBy .btn {
+  margin: 1em 0.2em;
+}
+
+.articleCard {
+  margin: 1em auto;
+}
+
+.topics-list {
+  margin: 0px;
+  padding: 0px;
+}
+.topics-list .btn{
+  margin: 0.5em auto;
+  justify-content: center;
+}
+
+.authorsPage img{
+  width: 30%;
+  height: auto;
+}
+
+.authorsPage ul {
   padding: 0px;
 }
 
-.headerLinks {
-  display:flex;
-}
-
-.form-group {
-  display: flex;
-}
-
-
-.loggedInUser {
-  margin-right: 5px;
+.articleForm {
+  margin-top: 1em;
 }
 
 .articleInput {
-  border: solid 1px #D3D3D3;
-  border-radius: 5px;
-  width: 40vw;
-  height: 5vh;
-  margin: 0.5em 8em;
+  margin: 0.3em auto;
 }
 
-.articleLabel {
-  height: 3em;
-  width: 3em;
-  margin-left: 15vw;
-}
-
-.titleInput {
-  margin-left: 11vw;
-}
 
 @media only screen and (max-width: 600px) {
 

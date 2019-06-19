@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Loader from 'react-loader-spinner'
-import { getAllUsers, checkImg } from '../../api'
+import { getAllUsers } from '../../api'
 import { Link } from '@reach/router'
 
 export default class Authors extends Component {
@@ -18,7 +18,7 @@ export default class Authors extends Component {
   render() {
     const { authors, } = this.state;
     return (
-      <div>
+      <div className='authorsPage'>
         <h1>Most Popular Authors</h1>
         {!authors && <Loader type="Puff"
           color="#00BFFF"

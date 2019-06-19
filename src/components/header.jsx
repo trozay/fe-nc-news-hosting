@@ -13,9 +13,9 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <Link to='/'><h1>NC News</h1></Link>
-        <div className='form-inline login'>
-          {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4 className='loggedInUser'>{loggedInUser}</h4></Link>}
-          <div className='headerLinks'>
+        <div className='headerLinks'>
+          <div className='form-inline login'>
+            {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4 className='loggedInUser'>{loggedInUser}</h4></Link>}
             {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
               handleInput={this.props.handleInput} loggedInUser={loggedInUser} /> : <SignOut signOut={this.props.signOut} />}
             {this.props.err && <h4>Invalid Username</h4>}

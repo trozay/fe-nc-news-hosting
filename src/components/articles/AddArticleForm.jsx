@@ -4,16 +4,14 @@ const AddArticleForm = props => {
   return (
     <form onSubmit={props.handleSubmit} className='articleForm'>
       <div className="form-group articleInputBox titleInput">
-        <label className='articleLabel titleInput' >Article Title</label>
-        <input required={true} type='text' onChange={props.handleChange} className='articleTitleInput articleInput' />
+        {/* <label className='articleLabel titleInput' >Article Title</label> */}
+        <input required={true} type='text' onChange={props.handleChange} className='articleTitleInput articleInput' placeholder='Title' />
       </div>
-      <div>
-        <label className='articleLabel'>Topic</label>
-        <input required={true} type='text' onChange={props.handleChange} className='topicInput articleInput' />
+      <div className='form-group'>
+        <input required={true} type='text' onChange={props.handleChange} className='topicInput articleInput' placeholder='topic' />
       </div>
-      <div>
-        <label className='articleLabel'>Body</label>
-        <input required={true} type='text' onChange={props.handleChange} className='bodyInput articleInput' />
+      <div className='form-group'>
+        <input required={true} type='text' onChange={props.handleChange} className='bodyInput articleInput' placeholder="What's on your mind" />
       </div>
       <button type='submit' className='btn btn-outline-primary btn-sm'>Post</button>
     </form>

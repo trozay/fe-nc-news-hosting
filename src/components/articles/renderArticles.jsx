@@ -9,7 +9,7 @@ const RenderArticles = props => {
   return (
     <div>
       <PageButtons maxPages={maxPage} changePage={changePage} />
-      <h3>{title}</h3>
+      <h3 className='articlesPageTitle'>{title}</h3>
       {!articles && <Loader type="Puff"
         color="#00BFFF"
         height="100"
