@@ -3,7 +3,7 @@ import React from 'react'
 const Error = ({ err }) => {
   if (err) return (
     <div>
-      <h2>Not Found</h2>
+      <h2>{err.errMsg}</h2>
     </div>
   )
   return (<div>

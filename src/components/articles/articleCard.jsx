@@ -42,17 +42,17 @@ class ArticleCard extends Component {
       .catch(err => console.dir(err))
   };
 
-  handleVoteClick = props => {
-    updateArticleVote(props)
+  handleVoteClick = event => {
+    updateArticleVote(event)
       .catch(err => this.setState(prevState => {
         return {
-          articleVotes: prevState.articleVotes - props.inc_votes
+          articleVotes: prevState.articleVotes - event.inc_votes
         };
       }));
 
     this.setState(prevState => {
       return {
-        articleVotes: prevState.articleVotes + props.inc_votes
+        articleVotes: prevState.articleVotes + event.inc_votes
       };
     });
   };

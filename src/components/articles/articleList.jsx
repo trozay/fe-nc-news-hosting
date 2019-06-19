@@ -1,19 +1,18 @@
 import React from 'react';
 import ArticleCard from './articleCard'
 
-export class ArticleList extends React.Component {
+const ArticleList = props => {
+  const { articles, loggedInUser } = props;
+  return (
+    <ul className='container articlesContainer'>
+      {
+        articles.map(article => {
+          return <ArticleCard article={article} loggedInUser={loggedInUser} key={article.article_id} />
+        })
+      }
+    </ul>
+  )
 
-  render() {
-    return (
-      <ul className='container articlesContainer'>
-        {
-          this.props.articles.map(article => {
-            return <ArticleCard article={article} loggedInUser={this.props.loggedInUser} key={article.article_id} />
-          })
-        }
-      </ul>
-    )
-  }
 };
 
 

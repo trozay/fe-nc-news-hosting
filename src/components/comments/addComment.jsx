@@ -15,7 +15,6 @@ class AddComment extends Component {
         <h5>Add Comment</h5>
         {<AddCommentForm onChange={this.handleInput} onSubmit={this.handleSubmit} body={body} username={username} />}
         {errMsg && <h4>{errMsg}</h4>}
-        {/* {successMsg && <h4>{successMsg}</h4>} */}
       </div>
     )
   }

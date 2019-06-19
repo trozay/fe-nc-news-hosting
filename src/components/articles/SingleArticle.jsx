@@ -16,7 +16,10 @@ class SingleArticle extends Component {
     getSingleArticle(this.props.id)
       .then(article => article)
       .then(article => this.setState({ article }))
-      .catch((err) => this.setState({ err: { errMsg: 'Article Not Found', errStatus: 400 } }))
+      .catch((err) => {
+        const { status, data: { msg } } = err.response;
+        this.setState({ err: { errMsg: msg, errStatus: status } })
+      })
   };
 
   render() {

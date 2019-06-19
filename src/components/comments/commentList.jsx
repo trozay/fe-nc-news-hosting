@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CommentCard from './commentCard';
 
-class CommentList extends Component {
-  render() {
-    const { loggedInUser } = this.props;
-    return <ul> {
-      this.props.comments.map(comment => {
-        return <CommentCard comment={comment} loggedInUser={loggedInUser} key={comment.comment_id} handleCommentDelete={this.props.handleCommentDelete} />
-      })
-    }
-    </ul>
+const CommentList = props => {
+  const { loggedInUser, comments, handleCommentDelete } = props;
+  return <ul> {
+    comments.map(comment => {
+      return <CommentCard comment={comment} loggedInUser={loggedInUser} key={comment.comment_id} handleCommentDelete={handleCommentDelete} />
+    })
   }
+  </ul>
 };
 
 export default CommentList;

@@ -79,6 +79,12 @@ export const getTopics = props => {
     .then(({ data: { topics } }) => topics)
 };
 
+export const checkImg = url => {
+  return axios.get(url)
+    .catch(err => err)
+};
+
+
 
 
 export default getArticles;
