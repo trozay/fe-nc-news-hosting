@@ -3,8 +3,7 @@ import React from 'react'
 const AddCommentForm = props => {
   return (
     <form onSubmit={props.onSubmit}>
-      <input required={true} type='text' className='body' onChange={props.onChange} value={props.body} />
-      <input type='submit' />
+      <input required={true} type='text' className='body form-control' onChange={props.onChange} value={props.body} />
     </form>
   )
 };

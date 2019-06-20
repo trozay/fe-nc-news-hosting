@@ -20,7 +20,7 @@ class AddComment extends Component {
   }
 
   handleInput = e => {
-    this.setState({ [e.target.className]: e.target.value });
+    this.setState({ [e.target.className.split(' ')[0]]: e.target.value });
   };
 
   handleSubmit = e => {

@@ -74,90 +74,50 @@ li {
   margin: 0.3em auto;
 }
 
+.justMobile {
+  display: none;
+}
 
-@media only screen and (max-width: 600px) {
-
-  .header h1 {
-    font-size: 30px;
-  }
-
-  .header {
-    margin-bottom: 1em;
-  }
-
-  .headerLinks {
-    position: absolute; 
-    right: 20px;
-  }
-
-  .loggedInUser {
-    display: none;
-  }
- 
-  .dontDisplay {
-    display: none;
-  }
-
-ul {
+.singleArticleCard {
+  width: 90%;
+  margin: 1em auto;
   padding: 0px;
 }
 
-  .articleCard {
-    width: 90%;
-    margin-left:5%;
-    margin-right: 5%;
-    padding: 0px;
-  }
+.commentCard {
+  width: 90%;
+  margin: 1.6em auto;
+}
 
-  .commentContainer {
-    width: 90%;
-    margin-left:5%;
-    margin-right: 5%;
-    padding: 0px;
-    /* padding-right: 10px; */
-  }
+.commentList {
+  padding: 0px;
+  margin: auto 1em;
+}
 
-  .header .btn-sm {
-    width: 45px;
-    height: 30px;
-    font-size: 8px;
-    margin: 5px; 
-    padding: 0px;
-  }
+.form-control {
+  width: 80%;
+  margin: auto;
+}
 
-  .login {
-    width: 50%;
-  }
 
-  .about-link {
+@media only screen and (max-width: 700px) {
+  .loggedInUser {
     display: none;
   }
+}
 
-  .displayTopics {
-    display: none;
-  }
-
+@media only screen and (max-width: 500px) {
   .mobile-header {
     display: block;
-    margin-bottom: 20px;
   }
 
-  .login-input{
-    width: 175px;
-    margin: 0px;
+  .loginError {
+    display: none;
   }
 
-  .login-btn {
+  .headerTabs {
    display: none;
   }
 
-  .form-group {
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .about-page h2{
-    font-size: 20px;
-  }
-
+  
 }

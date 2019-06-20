@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { getSingleArticle } from '../../api';
 import SingleArticleCard from './SingleArticleCard';
 import { deleteArticle } from '../../api';
@@ -28,7 +28,7 @@ class SingleArticle extends Component {
     if (err) return <Error err={err} />
     if (deleteMsg) return <h2>{deleteMsg}</h2>
     return (
-      <div>
+      <Fragment>
         {!article && <Loader type="Puff"
           color="#00BFFF"
           height="100"
@@ -37,7 +37,7 @@ class SingleArticle extends Component {
         {article && <SingleArticleCard article={article} loggedInUser={loggedInUser} key={article.article_id} handleArticleDelete={this.handleArticleDelete} />}
 
         <Comments id={this.props.id} loggedInUser={loggedInUser} filterItems={this.props.filterItems} comments={comments} query={query} />
-      </div >
+      </Fragment >
     )
   };
 

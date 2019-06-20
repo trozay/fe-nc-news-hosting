@@ -14,11 +14,13 @@ class Header extends Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <Link to='/'><h1>NC News</h1></Link>
         <div className='headerLinks'>
-          <div className='form-inline login'>
-            {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4 className='loggedInUser'>{loggedInUser}</h4></Link>}
+          {loggedInUser && <Link to={`/articles/author/${loggedInUser}`}><h4 className='loggedInUser'>{loggedInUser}</h4></Link>}
+          <div className='login'>
             {!loggedInUser ? <LoginBar handleLogin={this.props.handleLogin}
               handleInput={this.props.handleInput} loggedInUser={loggedInUser} /> : <SignOut signOut={this.props.signOut} />}
-            {this.props.err && <h4>Invalid Username</h4>}
+            {this.props.err && <h4 className='loginError'>Invalid Username</h4>}
+          </div>
+          <div className='headerTabs'>
             {loggedInUser && <Link to='/addArticle' ><button className='btn btn-outline-primary btn-sm'>Add Article</button></Link>}
             <Link to='/about'><button className='btn btn-outline-primary btn-sm about-link'>About</button></Link>
             <Link to='/topics'><button className='topicsHeader btn btn-outline-primary btn-sm dontDisplay'>Topics</button></Link>

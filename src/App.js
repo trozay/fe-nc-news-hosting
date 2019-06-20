@@ -34,7 +34,7 @@ class App extends React.Component {
         <div className='mobile-header'>
           <Link to='/about'><button className='btn btn-outline-primary btn-sm'>About</button></Link>
           <Link to='/topics'><button className='btn btn-outline-primary btn-sm'>Topics</button></Link>
-
+          <Link to='/authors'><button className='btn btn-outline-primary btn-sm dontDisplay'>Authors</button></Link>
         </div>
         <Router>
           <Home path='/' loggedInUser={loggedInUser} query={query} filterItems={this.filterItems} />

@@ -33,9 +33,7 @@ export default class Comments extends Component {
         {comments && comments.length === 0 && <h3>Be the first to comment on this article!</h3>}
         {loggedInUser && <AddComment id={id} loggedInUser={loggedInUser} handlePostComment={this.handlePostComment} />}
         {comments && comments.length !== 0 && <SortBy filterItems={filterItems} query={query} columnsToSort={['votes', 'created at']} />}
-        <ul>
-          {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleCommentDelete={this.handleCommentDelete} />}
-        </ul>
+        {comments && <CommentList comments={comments} loggedInUser={loggedInUser} handleCommentDelete={this.handleCommentDelete} />}
       </div>
     )
   }

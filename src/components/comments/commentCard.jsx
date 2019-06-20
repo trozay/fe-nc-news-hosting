@@ -18,17 +18,15 @@ class CommentCard extends Component {
     const { commentVotes } = this.state;
     return (
       <div>
-        <li className='commentContainer'>
-          <div className='card'>
-            <Link to={`/articles/author/${comment.author}`}><h6 className='card-header'>Author: {comment.author}</h6></Link>
-            <p className='card-body'>{comment.body}</p>
-            <h6>Votes: {commentVotes}</h6>
-            {loggedInUser && <VoteButtons
-              handleVoteClick={this.handleVoteClick} id={comment.comment_id} />}
-            <h6>{comment.created_at.slice(0, 10)}</h6>
-            {comment.author === loggedInUser ? canDelete = true : null}
-            {canDelete && <button className='btn btn-danger btn-sm' onClick={() => this.props.handleCommentDelete(comment.comment_id)}>Delete</button>}
-          </div>
+        <li className='commentCard card'>
+          <Link to={`/articles/author/${comment.author}`}><h6 className='card-header'>Author: {comment.author}</h6></Link>
+          <p className='card-body'>{comment.body}</p>
+          <h6>Votes: {commentVotes}</h6>
+          {loggedInUser && <VoteButtons
+            handleVoteClick={this.handleVoteClick} id={comment.comment_id} />}
+          <h6>{comment.created_at.slice(0, 10)}</h6>
+          {comment.author === loggedInUser ? canDelete = true : null}
+          {canDelete && <button className='btn btn-danger btn-sm' onClick={() => this.props.handleCommentDelete(comment.comment_id)}>Delete</button>}
         </li>
       </div>
     )
