@@ -2,7 +2,7 @@ import React from 'react'
 
 export const SignOut = props => {
   return (
-    <button className='btn btn-outline-primary btn-sm' onClick={props.signOut}>log out</button>
+    <button className='sign-out btn btn-outline-primary btn-sm' onClick={props.signOut}>log out</button>
   )
 };
 

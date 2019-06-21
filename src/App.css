@@ -1,6 +1,6 @@
 body {
-  margin:0;
-  padding: 0;
+  margin:0px;
+  padding: 0px;
   text-align: center;
   color: #007BFF;
   display: grid;
@@ -32,6 +32,12 @@ li {
   margin-right: 0.5em;
 }
 
+.articlesContainer {
+  padding: 0px;
+  width: 100%;
+  margin: auto;
+}
+
 .articlesPageTitle {
   margin: 0.6em auto;
 }
@@ -45,7 +51,9 @@ li {
 }
 
 .articleCard {
+  width: 90%;
   margin: 1em auto;
+  padding: 0px;
 }
 
 .topics-list {
@@ -99,6 +107,9 @@ li {
   margin: auto;
 }
 
+.headerLinks { 
+   display: flex;
+}
 
 @media only screen and (max-width: 700px) {
   .loggedInUser {
@@ -107,8 +118,25 @@ li {
 }
 
 @media only screen and (max-width: 500px) {
+  .navbar {
+    padding: 0px;
+  }
+
   .mobile-header {
     display: block;
+  }
+
+  .headerLinks {
+    margin: auto 1em;
+  }
+
+  nav a {
+    margin-left: 1em;
+  }
+
+  .mobile-header .btn{
+    margin: 2em;
+    justify-content: center;
   }
 
   .loginError {
@@ -119,5 +147,18 @@ li {
    display: none;
   }
 
-  
+  .login-bar {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    right: 0;
+    width: 13em;
+  }
+
+  .login-bar input {
+    margin: 0px;
+    padding: 0px;
+    width: 60%;
+    height: 100%;
+  }
 }
