@@ -4,7 +4,7 @@ NC News is a Reddit style news aggregation application.
 
 This repository is for the front end of the application. In order to see the deployed version please click this [link](https://react-nc-news.netlify.com). To view the backend repo click this [link](https://github.com/trozay/nc-news-be/) or to see the hosted version of the [backend](https://new-nc-app.herokuapp.com/api).
 
-Within the frontend, you can view the numerous pages NC-NEWS has to offer, if you are logged in you can comment(if not using 'guest') and like articles, you can like individual comments, and you can delete your own comments(if not using 'guest').
+Within the frontend, you can view the numerous pages NC-NEWS has to offer, if you are logged in you can comment and like articles, you can like individual comments, and you can delete your own comments and articles.
 
 ## Prerequisites
 - @reach/router v1.2
