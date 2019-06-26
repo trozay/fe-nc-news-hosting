@@ -52,7 +52,7 @@ This will deploy the site to your actual url: `https://your-site-name.netlify.co
 * [React](https://reactjs.org/)
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-*[Axios](https://www.npmjs.com/package/axios)
+* [Axios](https://www.npmjs.com/package/axios)
 
 ## Author
 
